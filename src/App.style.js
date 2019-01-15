@@ -12,7 +12,10 @@ export default theme => ({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    maxWidth: '400px',
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: '400px',
+    },
+    maxWidth: '500px',
     maxHeight: '900px',
   }
 })
