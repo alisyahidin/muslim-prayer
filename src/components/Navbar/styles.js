@@ -6,4 +6,7 @@ export default theme => ({
     bottom: 0,
     borderRadius: '0px',
   },
+  tab: {
+    minWidth: 'unset',
+  }
 })

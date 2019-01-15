@@ -42,9 +42,9 @@ class Navbar extends Component {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab component={Link} to="/" value="/" icon={<HomeIcon />} />
-          <Tab component={Link} to="/prayers" value="/prayers" icon={<EventAvailableIcon />} />
-          <Tab component={Link} to="/setting" value="/setting" icon={<SettingsIcon />} />
+          <Tab className={classes.tab} component={Link} to="/" value="/" icon={<HomeIcon />} />
+          <Tab className={classes.tab} component={Link} to="/prayers" value="/prayers" icon={<EventAvailableIcon />} />
+          <Tab className={classes.tab} component={Link} to="/setting" value="/setting" icon={<SettingsIcon />} />
         </Tabs>
       </Paper>
     )
