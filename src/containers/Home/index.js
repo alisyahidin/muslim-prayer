@@ -17,6 +17,7 @@ class Home extends Component {
       <div
         className={classes.home}
         onWheel={this.context.updateByWheel}
+        onTouchStart={this.context.setInitTouched}
       >
         <PrayerScreen />
       </div>

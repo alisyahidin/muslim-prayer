@@ -7,14 +7,32 @@ const withPrayerScreenAnimation = Component => {
     state = {
       navbar: -48,
       height: '100%',
+      initTouch: 0,
     }
 
-    onWheel = e => {
+    byWheel = e => {
       const wheel = Math.round(e.deltaY)
 
       this.setState({
         navbar: wheel < 20 ? -48 : 0,
         height: wheel > 20 ? '35%' : '100%',
+      })
+    }
+
+    handleInitTouch = e => {
+      const initTouch = Math.round(e.targetTouches[0].clientY)
+
+      this.setState({ initTouch })
+    }
+
+    byTouch = e => {
+      const { initTouch } = this.state
+      let touched = Math.round(e.targetTouches[0].clientY)
+      touched -= initTouch
+
+      this.setState({
+        navbar: touched < -100 ? 0 : -48,
+        height: touched < -100 ? '35%' : '100%',
       })
     }
 
@@ -24,9 +42,11 @@ const withPrayerScreenAnimation = Component => {
       return (
         <PrayerScreenAnimation.Provider
           value={{
-            navbar: navbar,
-            height: height,
-            updateByWheel: this.onWheel
+            navbar,
+            height,
+            updateByWheel: this.byWheel,
+            updateByTouch: this.byTouch,
+            setInitTouched: this.handleInitTouch,
           }}
         >
           <Component />

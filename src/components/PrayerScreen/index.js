@@ -11,11 +11,12 @@ class PrayerScreen extends Component {
 
   render() {
     const { classes } = this.props
-    const { height } = this.context
+    const { height, updateByTouch } = this.context
 
     return (
       <div
         className={classes.PrayerScreen}
+        onTouchMove={updateByTouch}
         style={{ height: height }}
       >
         <h1>Prayer Screen</h1>
