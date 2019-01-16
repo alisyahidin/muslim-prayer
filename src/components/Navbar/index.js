@@ -9,12 +9,12 @@ import EventAvailableIcon from '@material-ui/icons/EventAvailable'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { Link, withRouter } from 'react-router-dom'
 
-import NavigationHeight from '../../utils/NavigationHeight'
+import PrayerScreenAnimation from '../../utils/PrayerScreenAnimation'
 
 import styles from './styles'
 
 class Navbar extends Component {
-  static contextType = NavigationHeight
+  static contextType = PrayerScreenAnimation
 
   state = {
     screen: '/',
@@ -23,6 +23,7 @@ class Navbar extends Component {
   handleChange = (event, screen) => {
     if (screen === '/')
       this.context.updateByWheel({deltaY: -21})
+
     this.setState({ screen })
   }
 

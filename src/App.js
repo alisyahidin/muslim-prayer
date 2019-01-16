@@ -7,7 +7,7 @@ import Home from './containers/Home/'
 import Prayers from './containers/Prayers/'
 import Setting from './containers/Setting/'
 
-import withNavigationHeight from './contexts/withNavigationHeight'
+import withPrayerScreenAnimation from './contexts/withPrayerScreenAnimation'
 
 import './App.scss'
 import styles from './App.style'
@@ -32,6 +32,6 @@ class App extends Component {
   }
 }
 
-export default withNavigationHeight(
+export default withPrayerScreenAnimation(
   withStyles(styles)(App)
 )
