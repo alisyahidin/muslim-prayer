@@ -9,14 +9,20 @@ import EventAvailableIcon from '@material-ui/icons/EventAvailable'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { Link, withRouter } from 'react-router-dom'
 
+import NavigationHeight from '../../utils/NavigationHeight'
+
 import styles from './styles'
 
 class Navbar extends Component {
+  static contextType = NavigationHeight
+
   state = {
     screen: '/',
   }
 
   handleChange = (event, screen) => {
+    if (screen === '/')
+      this.context.updateByWheel({deltaY: -21})
     this.setState({ screen })
   }
 
@@ -32,9 +38,10 @@ class Navbar extends Component {
   render() {
     const { classes } = this.props
     const { screen } = this.state
+    const { bottom } = this.context
 
     return (
-      <Paper className={classes.navbar}>
+      <Paper className={classes.navbar} style={{ bottom: bottom }}>
         <Tabs
           value={screen}
           onChange={this.handleChange}

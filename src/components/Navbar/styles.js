@@ -3,8 +3,8 @@ export default theme => ({
     width: '100%',
     position: 'absolute',
     top: 'auto',
-    bottom: 0,
     borderRadius: '0px',
+    transition: 'all 300ms cubic-bezier(.12,.62,.39,.99)',
   },
   tab: {
     minWidth: 'unset',

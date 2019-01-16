@@ -7,6 +7,8 @@ import Home from './containers/Home/'
 import Prayers from './containers/Prayers/'
 import Setting from './containers/Setting/'
 
+import withNavigationHeight from './contexts/withNavigationHeight'
+
 import './App.scss'
 import styles from './App.style'
 
@@ -30,4 +32,6 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App)
+export default withNavigationHeight(
+  withStyles(styles)(App)
+)
