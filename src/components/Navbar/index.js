@@ -37,9 +37,12 @@ class Navbar extends Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, location } = this.props
     const { screen } = this.state
-    const { bottom } = this.context
+    let { bottom } = this.context
+
+    if (location.pathname !== '/')
+      bottom = 0
 
     return (
       <Paper className={classes.navbar} style={{ bottom: bottom }}>
