@@ -9,6 +9,13 @@ import styles from './styles'
 class PrayerScreen extends Component {
   static contextType = PrayerScreenAnimation
 
+  handleClick = e => {
+    const { height, updateByWheel } = this.context
+
+    if (height === '35%')
+      updateByWheel({deltaY: 0})
+  }
+
   render() {
     const { classes } = this.props
     const { height, updateByTouch } = this.context
@@ -18,6 +25,7 @@ class PrayerScreen extends Component {
         className={classes.PrayerScreen}
         onTouchMove={updateByTouch}
         style={{ height: height }}
+        onClick={this.handleClick}
       >
         <h1>Prayer Screen</h1>
       </div>
