@@ -1,11 +1,11 @@
 import React from 'react'
 
-import PrayerScreenAnimation from '../utils/PrayerScreenAnimation'
+import PrayerScreenAnimation from '../contexts/PrayerScreenAnimation'
 
 const withPrayerScreenAnimation = Component => {
   return class extends React.Component {
     state = {
-      bottom: -48,
+      navbar: -48,
       height: '100%',
     }
 
@@ -13,18 +13,18 @@ const withPrayerScreenAnimation = Component => {
       const wheel = Math.round(e.deltaY)
 
       this.setState({
-        bottom: wheel < 20 ? -48 : 0,
+        navbar: wheel < 20 ? -48 : 0,
         height: wheel > 20 ? '35%' : '100%',
       })
     }
 
     render() {
-      const { bottom , height } = this.state
+      const { navbar , height } = this.state
 
       return (
         <PrayerScreenAnimation.Provider
           value={{
-            bottom: bottom,
+            navbar: navbar,
             height: height,
             updateByWheel: this.onWheel
           }}

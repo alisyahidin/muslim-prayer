@@ -1,8 +1,8 @@
 import { createContext } from 'react'
 
 const defaultContext = {
-  bottom: 0,
-  height: '100%',
+  navbar: undefined,
+  height: undefined,
   updateByWheel: () => {
     console.log('from default PrayerScreenAnimation.js')
   }

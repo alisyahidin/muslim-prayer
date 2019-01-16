@@ -9,7 +9,7 @@ import EventAvailableIcon from '@material-ui/icons/EventAvailable'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { Link, withRouter } from 'react-router-dom'
 
-import PrayerScreenAnimation from '../../utils/PrayerScreenAnimation'
+import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 
 import styles from './styles'
 
@@ -39,13 +39,13 @@ class Navbar extends Component {
   render() {
     const { classes, location } = this.props
     const { screen } = this.state
-    let { bottom } = this.context
+    let { navbar } = this.context
 
     if (location.pathname !== '/')
-      bottom = 0
+      navbar = 0
 
     return (
-      <Paper className={classes.navbar} style={{ bottom: bottom }}>
+      <Paper className={classes.navbar} style={{ bottom: navbar }}>
         <Tabs
           value={screen}
           onChange={this.handleChange}

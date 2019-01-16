@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
 import PrayerScreen from '../../components/PrayerScreen/'
-import PrayerScreenAnimation from '../../utils/PrayerScreenAnimation'
+import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 
 import styles from './styles'
 
