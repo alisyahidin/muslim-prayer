@@ -1,10 +1,13 @@
 export default theme => ({
   navbar: {
-    width: '100%',
+    background: '#FFF',
     position: 'absolute',
     top: 'auto',
-    borderRadius: '0px',
-    transition: 'all 300ms cubic-bezier(.12,.62,.39,.99)',
+    minHeight: 48,
+    width: '100%',
+    boxShadow: `0px 1px 5px 0px rgba(0,0,0,0.2),
+      0px 2px 2px 0px rgba(0,0,0,0.14),
+      0px 3px 1px -2px rgba(0,0,0,0.12)`,
   },
   tab: {
     minWidth: 'unset',

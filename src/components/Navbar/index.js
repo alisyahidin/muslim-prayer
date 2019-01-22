@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import HomeIcon from '@material-ui/icons/Home'
@@ -10,7 +9,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import { Link, withRouter } from 'react-router-dom'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
-
+import Bar from './Bar.js'
 import styles from './styles'
 
 class Navbar extends Component {
@@ -39,13 +38,13 @@ class Navbar extends Component {
   render() {
     const { classes, location } = this.props
     const { screen } = this.state
-    let { navbar } = this.context
+    let { scrolled } = this.context
 
     if (location.pathname !== '/')
-      navbar = 0
+      scrolled = true
 
     return (
-      <Paper className={classes.navbar} style={{ bottom: navbar }}>
+      <Bar className={classes.navbar} pose={scrolled ? 'show' : 'hide'}>
         <Tabs
           value={screen}
           onChange={this.handleChange}
@@ -53,11 +52,29 @@ class Navbar extends Component {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab className={classes.tab} component={Link} to="/" value="/" icon={<HomeIcon />} />
-          <Tab className={classes.tab} component={Link} to="/prayers" value="/prayers" icon={<EventAvailableIcon />} />
-          <Tab className={classes.tab} component={Link} to="/setting" value="/setting" icon={<SettingsIcon />} />
+          <Tab
+            className={classes.tab}
+            component={Link}
+            to="/"
+            value="/"
+            icon={<HomeIcon />}
+          />
+          <Tab
+            className={classes.tab}
+            component={Link}
+            to="/prayers"
+            value="/prayers"
+            icon={<EventAvailableIcon />}
+          />
+          <Tab
+            className={classes.tab}
+            component={Link}
+            to="/setting"
+            value="/setting"
+            icon={<SettingsIcon />}
+          />
         </Tabs>
-      </Paper>
+      </Bar>
     )
   }
 }
