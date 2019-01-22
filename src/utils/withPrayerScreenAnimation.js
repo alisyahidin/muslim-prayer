@@ -5,8 +5,7 @@ import PrayerScreenAnimation from '../contexts/PrayerScreenAnimation'
 const withPrayerScreenAnimation = Component => {
   return class extends React.Component {
     state = {
-      navbar: -48,
-      height: '100%',
+      scrolled: false,
       initTouch: 0,
     }
 
@@ -14,8 +13,7 @@ const withPrayerScreenAnimation = Component => {
       const wheel = Math.round(e.deltaY)
 
       this.setState({
-        navbar: wheel < 20 ? -48 : 0,
-        height: wheel > 20 ? '35%' : '100%',
+        scrolled: wheel > 0,
       })
     }
 
@@ -31,19 +29,17 @@ const withPrayerScreenAnimation = Component => {
       touched -= initTouch
 
       this.setState({
-        navbar: touched < -100 ? 0 : -48,
-        height: touched < -100 ? '35%' : '100%',
+        scrolled: touched < -120,
       })
     }
 
     render() {
-      const { navbar , height } = this.state
+      const { scrolled } = this.state
 
       return (
         <PrayerScreenAnimation.Provider
           value={{
-            navbar,
-            height,
+            scrolled,
             updateByWheel: this.byWheel,
             updateByTouch: this.byTouch,
             setInitTouched: this.handleInitTouch,
