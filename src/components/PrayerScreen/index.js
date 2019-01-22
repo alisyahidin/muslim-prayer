@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
-import Screen from './Screen.js'
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
+import Screen from './Screen.js'
+import Mosque from '../Mosque/'
 
 import styles from './styles'
 
@@ -20,7 +21,7 @@ class PrayerScreen extends Component {
         onTouchMove={updateByTouch}
         pose={scrolled ? 'minimize' : 'maximize'}
       >
-        <h1>Prayer Screen</h1>
+        <Mosque />
       </Screen>
     )
   }

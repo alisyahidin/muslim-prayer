@@ -4,7 +4,7 @@ const Bar = posed.div({
   hide: {
     bottom: -48,
     transition: {
-      delay: 200,
+      delay: 100,
       duration: 500,
     }
   },
