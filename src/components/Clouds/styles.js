@@ -1,5 +1,5 @@
 export default theme => ({
-  mosque: {
+  cloud: {
     position: 'absolute',
   }
 })

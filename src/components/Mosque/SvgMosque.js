@@ -9,7 +9,7 @@ const SvgMosque = posed.img({
     right: 45,
     transition: {
       ease: easing,
-      duration: 800,
+      duration: 900,
     }
   },
   chibi: {
@@ -18,7 +18,7 @@ const SvgMosque = posed.img({
     right: 30,
     transition: {
       ease: easing,
-      duration: 800,
+      duration: 900,
     }
   },
 })
