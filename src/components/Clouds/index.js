@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import classNames from 'classnames'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import Cloud from './Cloud'
+import Sun from '../Sun/'
 
 import cloud1 from '../../assets/clouds/1.svg'
 import cloud2 from '../../assets/clouds/2.svg'
@@ -25,16 +25,16 @@ class Clouds extends Component {
       <>
         <Cloud
           pose={scrolled ? 'chibi' : 'normal'}
-          bottom={33}
-          right={8}
+          bottom={35}
+          right={11}
           className={classes.cloud}
           src={cloud1}
           alt="Cloud"
         />
         <Cloud
           pose={scrolled ? 'chibi' : 'normal'}
-          bottom={25}
-          right={45}
+          bottom={28}
+          right={57}
           className={classes.cloud}
           src={cloud2}
           alt="Cloud"
@@ -42,7 +42,7 @@ class Clouds extends Component {
         <Cloud
           pose={scrolled ? 'chibi' : 'normal'}
           bottom={40}
-          right={54}
+          right={47}
           className={classes.cloud}
           src={cloud3}
           alt="Cloud"
@@ -57,12 +57,13 @@ class Clouds extends Component {
         />
         <Cloud
           pose={scrolled ? 'chibi' : 'normal'}
-          bottom={43}
+          bottom={47}
           right={17}
           className={classes.cloud}
           src={cloud5}
           alt="Cloud"
         />
+        <Sun />
       </>
     )
   }

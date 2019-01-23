@@ -2,7 +2,7 @@ import posed from 'react-pose'
 
 const easing = [.10, .60, .40, 1]
 
-const SvgMosque = posed.img({
+const MosqueImg = posed.img({
   normal: {
     width: '70%',
     bottom: 0,
@@ -23,4 +23,4 @@ const SvgMosque = posed.img({
   },
 })
 
-export default SvgMosque
+export default MosqueImg

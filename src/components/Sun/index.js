@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
-import MosqueImg from './MosqueImg'
+import SunImg from './SunImg'
 
-import mosque from '../../assets/mosque/mosque_day.svg'
-import styles from './styles'
+import sun from '../../assets/sun/sun.svg'
+import styles from './styles.js'
 
-class Mosque extends Component {
+
+class Sun extends Component {
   static contextType = PrayerScreenAnimation
 
   render() {
@@ -16,18 +17,20 @@ class Mosque extends Component {
     const { scrolled } = this.context
 
     return (
-      <MosqueImg
-        className={classes.mosque}
+      <SunImg
         pose={scrolled ? 'chibi' : 'normal'}
-        src={mosque}
-        alt="Mosque"
+        bottom={47}
+        right={57}
+        className={classes.sun}
+        src={sun}
+        alt="Sun"
       />
     )
   }
 }
 
-Mosque.propTypes = {
+Sun.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Mosque)
+export default withStyles(styles)(Sun)
