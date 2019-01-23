@@ -14,6 +14,39 @@ import cloud5 from '../../assets/clouds/5.svg'
 
 import styles from './styles'
 
+const clouds = [
+  {
+    size: 100,
+    bottom: 35,
+    right: 11,
+    src: cloud1
+  },
+  {
+    size: 100,
+    bottom: 28,
+    right: 57,
+    src: cloud2
+  },
+  {
+    size: 75,
+    bottom: 42,
+    right: 47,
+    src: cloud3
+  },
+  {
+    size: 80,
+    bottom: 54,
+    right: 38,
+    src: cloud4
+  },
+  {
+    size: 90,
+    bottom: 47,
+    right: 17,
+    src: cloud5
+  },
+]
+
 class Clouds extends Component {
   static contextType = PrayerScreenAnimation
 
@@ -23,46 +56,15 @@ class Clouds extends Component {
 
     return (
       <>
-        <Cloud
-          pose={scrolled ? 'chibi' : 'normal'}
-          bottom={35}
-          right={11}
-          className={classes.cloud}
-          src={cloud1}
-          alt="Cloud"
-        />
-        <Cloud
-          pose={scrolled ? 'chibi' : 'normal'}
-          bottom={28}
-          right={57}
-          className={classes.cloud}
-          src={cloud2}
-          alt="Cloud"
-        />
-        <Cloud
-          pose={scrolled ? 'chibi' : 'normal'}
-          bottom={40}
-          right={47}
-          className={classes.cloud}
-          src={cloud3}
-          alt="Cloud"
-        />
-        <Cloud
-          pose={scrolled ? 'chibi' : 'normal'}
-          bottom={54}
-          right={38}
-          className={classes.cloud}
-          src={cloud4}
-          alt="Cloud"
-        />
-        <Cloud
-          pose={scrolled ? 'chibi' : 'normal'}
-          bottom={47}
-          right={17}
-          className={classes.cloud}
-          src={cloud5}
-          alt="Cloud"
-        />
+        { clouds.map((cloud, i) => (
+          <Cloud
+            key={i}
+            {...cloud}
+            pose={scrolled ? 'chibi' : 'normal'}
+            className={classes.cloud}
+            alt="Cloud"
+          />
+        ))}
         <Sun />
       </>
     )

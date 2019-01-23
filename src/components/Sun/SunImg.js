@@ -5,7 +5,7 @@ const easing = [.10, .60, .40, 1]
 
 const SunImg = posed.img({
   normal: {
-    width: '27%',
+    width: '30%',
     bottom: ({bottom}) => `${bottom}%`,
     right: ({right}) => `${right}%`,
     transition: {
@@ -16,7 +16,7 @@ const SunImg = posed.img({
   chibi: {
     bottom: ({bottom}) => `${bottom*1.4}%`,
     right: ({right}) => `${right-(right*0.35)}%`,
-    width: '17%',
+    width: '18%',
     transition: {
       ease: easing,
       duration: 800,
