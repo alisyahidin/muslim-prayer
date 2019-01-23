@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 
+import Wrapper from './Wrapper'
 import Prayer from './Prayer'
 import PrayerTime from './PrayerTime'
 import Left from './Left'
@@ -16,7 +17,7 @@ class Time extends Component {
     const { scrolled } = this.context
 
     return (
-      <div onClick={this.changeView} className={classes.time}>
+      <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
         <Prayer pose={scrolled ? 'left' : 'center'}>
           Dzuhur
         </Prayer>
@@ -26,7 +27,7 @@ class Time extends Component {
         <Left className={classes.timeLeft} pose={scrolled ? 'left' : 'center'}>
           55 minutes left
         </Left>
-      </div>
+      </Wrapper>
     )
   }
 }

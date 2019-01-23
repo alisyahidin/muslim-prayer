@@ -2,7 +2,7 @@ export default theme => ({
   time: {
     textAlign: 'center',
     whiteSpace: 'nowrap',
-    paddingTop: '25%',
+    fontSize: '1.4em',
     color: '#FFF',
     '&:hover': {
       cursor: 'default'
@@ -10,6 +10,6 @@ export default theme => ({
   },
   timeLeft: {
     marginTop: 8,
-    fontSize: '0.9rem',
+    fontSize: '0.7em',
   }
 })

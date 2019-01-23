@@ -22,7 +22,7 @@ const clouds = [
     src: cloud1
   },
   {
-    size: 100,
+    size: 90,
     bottom: 28,
     right: 57,
     src: cloud2
