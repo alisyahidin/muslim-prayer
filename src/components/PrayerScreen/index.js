@@ -6,6 +6,7 @@ import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import Screen from './Screen.js'
 import Mosque from '../Mosque/'
 import Clouds from '../Clouds/'
+import Time from '../Time/'
 
 import styles from './styles'
 
@@ -22,6 +23,7 @@ class PrayerScreen extends Component {
         onTouchMove={updateByTouch}
         pose={scrolled ? 'minimize' : 'maximize'}
       >
+        <Time />
         <Clouds />
         <Mosque />
       </Screen>
