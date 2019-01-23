@@ -8,19 +8,19 @@ const Cloud = posed.img({
     width: ({size}) => `${(23*size)/100}%`,
     bottom: ({bottom}) => `${bottom}%`,
     right: ({right}) => `${right}%`,
-    transition: {
+    transition: ({i}) => ({
       ease: easing,
-      duration: 800,
-    }
+      duration: 800 + i*150,
+    })
   },
   chibi: {
     bottom: ({bottom}) => `${bottom*1.4}%`,
     right: ({right}) => `${right-(right*0.35)}%`,
     width: ({size}) => `${(13*size)/100}%`,
-    transition: {
+    transition: ({i}) => ({
       ease: easing,
-      duration: 800,
-    }
+      duration: 1200 - i*150,
+    })
   }
 })
 

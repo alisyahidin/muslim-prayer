@@ -10,7 +10,7 @@ const SunImg = posed.img({
     right: ({right}) => `${right}%`,
     transition: {
       ease: easing,
-      duration: 800,
+      duration: 950,
     }
   },
   chibi: {
@@ -19,7 +19,7 @@ const SunImg = posed.img({
     width: '18%',
     transition: {
       ease: easing,
-      duration: 800,
+      duration: 950,
     }
   }
 })

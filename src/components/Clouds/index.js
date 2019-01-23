@@ -16,16 +16,16 @@ import styles from './styles'
 
 const clouds = [
   {
-    size: 100,
-    bottom: 35,
-    right: 11,
-    src: cloud1
-  },
-  {
     size: 90,
     bottom: 28,
     right: 57,
     src: cloud2
+  },
+  {
+    size: 100,
+    bottom: 35,
+    right: 11,
+    src: cloud1
   },
   {
     size: 75,
@@ -59,6 +59,7 @@ class Clouds extends Component {
         { clouds.map((cloud, i) => (
           <Cloud
             key={i}
+            i={i+1}
             {...cloud}
             pose={scrolled ? 'chibi' : 'normal'}
             className={classes.cloud}
