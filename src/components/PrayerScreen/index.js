@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import Screen from './Screen.js'
+import Sky from '../Sky/'
 import Mosque from '../Mosque/'
 import Clouds from '../Clouds/'
 import Time from '../Time/'
@@ -23,6 +24,7 @@ class PrayerScreen extends Component {
         onTouchMove={updateByTouch}
         pose={scrolled ? 'minimize' : 'maximize'}
       >
+        <Sky />
         <Time />
         <Clouds />
         <Mosque />

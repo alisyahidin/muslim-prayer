@@ -1,6 +1,4 @@
-const ratio = Math.round(window.innerHeight/window.innerWidth)
-const landscape = Math.round(window.innerHeight / (18.5 / 9))
-const portrait = '100%'
+import { maxWidth } from './constants/'
 
 export default theme => ({
   container: {
@@ -16,6 +14,6 @@ export default theme => ({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    maxWidth: ratio > 1 ? portrait : landscape,
+    maxWidth,
   }
 })
