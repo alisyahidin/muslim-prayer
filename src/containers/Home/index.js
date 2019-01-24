@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
 import PrayerScreen from '../../components/PrayerScreen/'
+import PrayerList from '../../components/PrayerList/'
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 
 import styles from './styles'
@@ -20,6 +21,7 @@ class Home extends Component {
         onTouchStart={this.context.setInitTouched}
       >
         <PrayerScreen />
+        <PrayerList />
       </div>
     )
   }

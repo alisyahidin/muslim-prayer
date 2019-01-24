@@ -7,7 +7,7 @@ import Home from './containers/Home/'
 import Prayers from './containers/Prayers/'
 import Setting from './containers/Setting/'
 
-import withPrayerScreenAnimation from './helpers/withPrayerScreenAnimation'
+import withPrayerScreenAnimation from './init/withPrayerScreenAnimation'
 
 import './App.scss'
 import styles from './App.style'
