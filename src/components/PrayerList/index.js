@@ -9,18 +9,43 @@ import IconButton from '@material-ui/core/IconButton'
 import AlarmIcon from '@material-ui/icons/Alarm'
 
 import Box from '../Box/'
+import PrayerTime from '../../contexts/PrayerTime'
 
 import styles from './styles'
 
 const prayers = [
-  'Shubuh',
-  'Dzuhur',
-  'Ashar',
-  'Maghrib',
-  'Isya'
+  {
+    id: 'shubuh',
+    name: 'Shubuh'
+  },
+  {
+    id: 'dzuhur',
+    name: 'Dzuhur',
+  },
+  {
+    id: 'ashar',
+    name: 'Ashar',
+  },
+  {
+    id: 'maghrib',
+    name: 'Maghrib',
+  },
+  {
+    id: 'isya',
+    name: 'Isya',
+  },
 ]
 
 class PrayerList extends Component {
+  static contextType = PrayerTime
+
+  updatePrayer = prayer => () => {
+    const { updatePrayer, clearNext } = this.context
+
+    updatePrayer(prayer)
+    clearNext()
+  }
+
   render() {
     const { classes } = this.props
 
@@ -29,12 +54,17 @@ class PrayerList extends Component {
         <Box>
           <List className={classes.lists} component="nav">
             {prayers.map((prayer, i) => (
-              <ListItem key={i} className={classes.list} button>
+              <ListItem
+                key={i}
+                onClick={this.updatePrayer(prayer.id)}
+                className={classes.list}
+                button
+              >
                 <ListItemText
                   classes={{
                     primary: classes.text
                   }}
-                  primary={prayer}
+                  primary={prayer.name}
                 />
                 <ListItemSecondaryAction>
                   <IconButton className={classes.icon}>
