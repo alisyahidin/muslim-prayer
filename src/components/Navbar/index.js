@@ -57,21 +57,21 @@ class Navbar extends Component {
             component={Link}
             to="/"
             value="/"
-            icon={<HomeIcon />}
+            icon={<HomeIcon className={classes.icon} />}
           />
           <Tab
             className={classes.tab}
             component={Link}
             to="/prayers"
             value="/prayers"
-            icon={<EventAvailableIcon />}
+            icon={<EventAvailableIcon className={classes.icon} />}
           />
           <Tab
             className={classes.tab}
             component={Link}
             to="/setting"
             value="/setting"
-            icon={<SettingsIcon />}
+            icon={<SettingsIcon className={classes.icon} />}
           />
         </Tabs>
       </Bar>

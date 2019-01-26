@@ -30,7 +30,12 @@ class PrayerList extends Component {
           <List className={classes.lists} component="nav">
             {prayers.map((prayer, i) => (
               <ListItem key={i} className={classes.list} button>
-                <ListItemText className={classes.text} primary={prayer} />
+                <ListItemText
+                  classes={{
+                    primary: classes.text
+                  }}
+                  primary={prayer}
+                />
                 <ListItemSecondaryAction>
                   <IconButton className={classes.icon}>
                     <AlarmIcon />

@@ -1,8 +1,9 @@
 import posed from 'react-pose'
+import { navbarHeight } from '../../constants/'
 
 const Bar = posed.div({
   hide: {
-    bottom: -48,
+    bottom: -(navbarHeight),
     transition: {
       delay: 100,
       duration: 500,

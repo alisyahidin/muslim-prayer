@@ -1,9 +1,11 @@
+import { navbarHeight, smallScreen } from '../../constants/'
+
 export default theme => ({
   prayerList: {
     boxSizing: 'border-box',
     height: '60%',
-    padding: 25,
-    paddingBottom: 25 + 48,
+    padding: smallScreen ? 15 : 25,
+    paddingBottom: (smallScreen ? 15 : 25) + navbarHeight,
   },
   lists: {
     height: '100%',
@@ -16,7 +18,8 @@ export default theme => ({
     borderRadius: '8px',
   },
   text: {
-    color: '#AAAAAA'
+    color: '#AAAAAA',
+    fontSize: smallScreen ? '0.75rem' : '1rem'
   },
   icon: {
     padding: 6,
