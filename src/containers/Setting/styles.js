@@ -6,7 +6,16 @@ export default theme => ({
     background: '#FFF',
     height: '100%',
     padding: 16,
-    paddingBottom: 16 + navbarHeight
+    paddingBottom: 16 + navbarHeight,
+    paddingTop: 0,
+  },
+  header: {
+    width: '85%',
+    color: '#979BB1',
+    textAlign: 'center',
+    borderBottom: 'solid 1px #F0F0F0',
+    margin: '0px auto',
+    marginBottom: theme.spacing.unit,
   },
   lists: {
     height: '100%',
@@ -18,6 +27,7 @@ export default theme => ({
   },
   textRoot: {
     padding: 0,
+    paddingLeft: `${theme.spacing.unit * 3}px !important`,
   },
   text: {
     color: '#979BB1',

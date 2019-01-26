@@ -5,6 +5,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import ListSubheader from '@material-ui/core/ListSubheader'
 
 import menu from './menu'
 import styles from './styles'
@@ -18,12 +19,10 @@ class Setting extends Component {
         <List
           className={classes.lists}
           component="nav"
+          subheader={<ListSubheader className={classes.header} component="div">Settings</ListSubheader>}
         >
           {menu.map((menu, i) => (
             <ListItem key={i} className={classes.list} button>
-              <ListItemIcon>
-                {menu.icon(classes.icon)}
-              </ListItemIcon>
               <ListItemText
                 classes={{
                   root: classes.textRoot,
@@ -31,6 +30,9 @@ class Setting extends Component {
                 }}
                 primary={menu.name}
               />
+              <ListItemIcon>
+                {menu.icon(classes.icon)}
+              </ListItemIcon>
             </ListItem>
           ))}
         </List>
