@@ -18,11 +18,11 @@ export default theme => ({
     borderRadius: '8px',
   },
   text: {
-    color: '#AAAAAA',
+    color: '#979BB1',
     fontSize: smallScreen ? '0.75rem' : '1rem'
   },
   icon: {
     padding: 6,
-    color: '#AAAAAA',
+    color: '#979BB1',
   }
 })

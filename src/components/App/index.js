@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 
-import Navbar from './components/Navbar/'
-import Home from './containers/Home/'
-import Prayers from './containers/Prayers/'
-import Setting from './containers/Setting/'
+import Navbar from '../Navbar/'
+import Home from '../../containers/Home/'
+import Prayers from '../../containers/Prayers/'
+import Setting from '../../containers/Setting/'
 
-import withPrayerScreenAnimation from './init/withPrayerScreenAnimation'
+import withPrayerScreenAnimation from '../../init/withPrayerScreenAnimation'
 
-import './App.scss'
-import styles from './App.style'
+import styles from './styles'
 
 class App extends Component {
   render() {

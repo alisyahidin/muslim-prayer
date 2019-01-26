@@ -1,4 +1,4 @@
-import { maxWidth } from './constants/'
+import { maxWidth } from '../../constants/'
 
 export default theme => ({
   container: {
