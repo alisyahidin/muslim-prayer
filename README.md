@@ -12,7 +12,10 @@ Muslim Prayer is a **Progressive Web App** built using react. This will remind y
 
 ## Demo
 [Click Here](https://muslim-prayer.netlify.com/)
+
 ## Prototype
+<img src="./prototype/prototype.gif" height="500" />
+
 ## Features
 - [x] Offline support
 - [ ] Time by Location
