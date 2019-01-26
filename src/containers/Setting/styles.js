@@ -14,6 +14,7 @@ export default theme => ({
   },
   list: {
     borderRadius: '8px',
+    padding: 5,
   },
   textRoot: {
     padding: 0,
