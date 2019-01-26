@@ -19,7 +19,7 @@ export default theme => ({
   },
   text: {
     color: '#979BB1',
-    fontSize: smallScreen ? '0.75rem' : '1rem'
+    fontSize: smallScreen ? '0.8rem' : '1rem'
   },
   icon: {
     padding: 6,

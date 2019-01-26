@@ -8,9 +8,8 @@ import styles from './styles'
 
 const prayerBox = ({children, classes, date}) => (
   <ButtonBase className={classes.prayerBox}>
-    <Badge color="secondary" badgeContent={2} classes={{ colorSecondary: classes.month }}>
-      <span className={classes.date}>{date+1}</span>
-    </Badge>
+    <span className={classes.month}>feb</span>
+    <span className={classes.date}>{date+1}</span>
   </ButtonBase>
 )
 

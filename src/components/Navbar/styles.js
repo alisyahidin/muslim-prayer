@@ -19,6 +19,6 @@ export default theme => ({
     minHeight: 'unset',
   },
   icon: {
-    fontSize: smallScreen ? 16 : 24,
+    fontSize: smallScreen ? 20 : 24,
   }
 })
