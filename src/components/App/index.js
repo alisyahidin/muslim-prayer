@@ -8,6 +8,7 @@ import Prayers from '../../containers/Prayers/'
 import Setting from '../../containers/Setting/'
 
 import withTiming from '../../utils/withTiming'
+import withPrayerTime from '../../utils/withPrayerTime'
 import withPrayerScreenAnimation from '../../utils/withPrayerScreenAnimation'
 
 import styles from './styles'
@@ -33,7 +34,9 @@ class App extends Component {
 }
 
 export default withTiming(
-  withPrayerScreenAnimation(
-    withStyles(styles)(App)
+  withPrayerTime(
+    withPrayerScreenAnimation(
+      withStyles(styles)(App)
+    )
   )
 )
