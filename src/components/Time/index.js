@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
+import PrayerTimeContext from '../../contexts/PrayerTime'
 
 import Wrapper from './Wrapper'
-import Prayer from './Prayer'
-import PrayerTime from './PrayerTime'
-import Left from './Left'
+import Title from './Title'
+import Clock from './Clock'
+import Remaining from './Remaining'
 import styles from './styles'
 
 class Time extends Component {
@@ -17,17 +18,23 @@ class Time extends Component {
     const { scrolled } = this.context
 
     return (
-      <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
-        <Prayer pose={scrolled ? 'left' : 'center'}>
-          Dzuhur
-        </Prayer>
-        <PrayerTime pose={scrolled ? 'left' : 'center'}>
-          12:07
-        </PrayerTime>
-        <Left className={classes.timeLeft} pose={scrolled ? 'left' : 'center'}>
-          55 minutes left
-        </Left>
-      </Wrapper>
+      <PrayerTimeContext.Consumer>
+        {prayer => {
+          return (
+            <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
+              <Title pose={scrolled ? 'left' : 'center'}>
+                {prayer.timing.current}
+              </Title>
+              <Clock pose={scrolled ? 'left' : 'center'}>
+                12:07
+              </Clock>
+              <Remaining className={classes.timeLeft} pose={scrolled ? 'left' : 'center'}>
+                55 minutes left
+              </Remaining>
+            </Wrapper>
+          )
+        }}
+      </PrayerTimeContext.Consumer>
     )
   }
 }

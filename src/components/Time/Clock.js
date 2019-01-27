@@ -2,7 +2,7 @@ import posed from 'react-pose'
 
 const easing = [.10, .60, .40, 1]
 
-const Prayer = posed.h6({
+const Clock = posed.h2({
   center: {
     paddingLeft: 0,
     width: '100%',
@@ -21,4 +21,4 @@ const Prayer = posed.h6({
   }
 })
 
-export default Prayer
+export default Clock

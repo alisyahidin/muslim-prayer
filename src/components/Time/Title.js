@@ -2,7 +2,7 @@ import posed from 'react-pose'
 
 const easing = [.10, .60, .40, 1]
 
-const Prayer = posed.p({
+const Title = posed.h6({
   center: {
     paddingLeft: 0,
     width: '100%',
@@ -21,4 +21,4 @@ const Prayer = posed.p({
   }
 })
 
-export default Prayer
+export default Title

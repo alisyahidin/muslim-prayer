@@ -5,26 +5,28 @@ import PrayerTime from '../contexts/PrayerTime'
 const withPrayerTime = Component => {
   return class extends React.Component {
     state = {
-      prayer: {
+      timing: {
         current: 'shubuh',
         next: undefined,
       }
     }
 
-    updatePrayer = prayer => {
+    updateTiming = prayer => {
+      clearTimeout(this.timeoutNext)
+
       this.setState(prevState => ({
-        prayer: {
-          current: typeof prevState.prayer.next === 'undefined' ? prayer : prevState.prayer.next,
+        timing: {
+          current: typeof prevState.timing.next === 'undefined' ? prayer : prevState.timing.next,
           next: prayer
         }
       }))
     }
 
-    clearNext = () => {
+    clearTiming = () => {
       this.timeoutNext = setTimeout(() => {
         this.setState(prevState => ({
-          prayer: {
-            current: prevState.prayer.next,
+          timing: {
+            current: prevState.timing.next,
             next: undefined,
           }
         }))
@@ -36,14 +38,14 @@ const withPrayerTime = Component => {
     }
 
     render() {
-      const { prayer } = this.state
+      const { timing } = this.state
 
       return (
         <PrayerTime.Provider
           value={{
-            prayer,
-            clearNext: this.clearNext,
-            updatePrayer: this.updatePrayer,
+            timing,
+            clearTiming: this.clearTiming,
+            updateTiming: this.updateTiming,
           }}
         >
           <Component />

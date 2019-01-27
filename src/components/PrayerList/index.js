@@ -40,10 +40,10 @@ class PrayerList extends Component {
   static contextType = PrayerTime
 
   updatePrayer = prayer => () => {
-    const { updatePrayer, clearNext } = this.context
+    const { updateTiming, clearTiming } = this.context
 
-    updatePrayer(prayer)
-    clearNext()
+    updateTiming(prayer)
+    clearTiming()
   }
 
   render() {

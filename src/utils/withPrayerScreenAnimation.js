@@ -13,10 +13,10 @@ const withPrayerScreenAnimation = Component => {
     }
 
     byWheel = e => {
-      const { updatePrayer } = this.context
+      const { updateTiming } = this.context
       const wheel = Math.round(e.deltaY)
 
-      if (wheel < 0) updatePrayer('dzuhur')
+      if (wheel < 0) updateTiming('dzuhur')
 
       this.setState({
         scrolled: wheel > 0,
@@ -30,12 +30,12 @@ const withPrayerScreenAnimation = Component => {
     }
 
     byTouch = e => {
-      const { updatePrayer } = this.context
+      const { updateTiming } = this.context
       const { initTouch } = this.state
       let touched = Math.round(e.targetTouches[0].clientY)
       touched -= initTouch
 
-      if (touched > 0) updatePrayer('dzuhur')
+      if (touched > 0) updateTiming('dzuhur')
 
       this.setState({
         scrolled: touched < -120,

@@ -2,7 +2,7 @@ import posed from 'react-pose'
 
 const easing = [.10, .60, .40, 1]
 
-const Prayer = posed.h2({
+const Remaining = posed.p({
   center: {
     paddingLeft: 0,
     width: '100%',
@@ -21,4 +21,4 @@ const Prayer = posed.h2({
   }
 })
 
-export default Prayer
+export default Remaining
