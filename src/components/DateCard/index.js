@@ -5,15 +5,15 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 
 import styles from './styles'
 
-const prayerBox = ({children, classes, date}) => (
-  <ButtonBase className={classes.prayerBox}>
+const DateCard = ({children, classes, date}) => (
+  <ButtonBase className={classes.dateCard}>
     <span className={classes.month}>feb</span>
     <span className={classes.date}>{date+1}</span>
   </ButtonBase>
 )
 
-prayerBox.propTypes = {
+DateCard.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(prayerBox)
+export default withStyles(styles)(DateCard)

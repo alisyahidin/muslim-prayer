@@ -5,14 +5,14 @@ import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
 
-const Box = ({children, classes, className}) => (
-  <div className={classNames(classes.box, className)}>
+const Card = ({children, classes, className}) => (
+  <div className={classNames(classes.card, className)}>
     {children}
   </div>
 )
 
-Box.propTypes = {
+Card.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(Box)
+export default withStyles(styles)(Card)

@@ -7,7 +7,7 @@ export default theme => ({
     padding: '0px 20px',
     paddingBottom: 20 + 48 + navbarHeight
   },
-  prayerBoxes: {
+  dates: {
     padding: '15px 10px',
     margin: 'unset',
   },

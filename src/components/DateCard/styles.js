@@ -1,5 +1,5 @@
 export default theme => ({
-  prayerBox: {
+  dateCard: {
     boxSizing: 'border-box',
     width: 'calc(20% - 10px)',
     padding: theme.spacing.unit * 1.5,

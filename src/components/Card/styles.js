@@ -1,5 +1,5 @@
 export default theme => ({
-  box: {
+  card: {
     boxSizing: 'border-box',
     height: '100%',
     padding: '15px',

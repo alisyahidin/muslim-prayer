@@ -9,6 +9,12 @@ import styles from './styles'
 class Sky extends Component {
   static contextType = Timing
 
+  componentWillUnmount() {
+    const { updateTiming } = this.context
+
+    updateTiming('shubuh')
+  }
+
   render() {
     const { classes } = this.props
     const { current, next } = this.context

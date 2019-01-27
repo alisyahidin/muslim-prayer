@@ -8,7 +8,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
 import AlarmIcon from '@material-ui/icons/Alarm'
 
-import Box from '../Box/'
+import Card from '../Card/'
 import Timing from '../../contexts/Timing'
 
 import styles from './styles'
@@ -51,7 +51,7 @@ class PrayerList extends Component {
 
     return (
       <div className={classes.prayerList}>
-        <Box>
+        <Card>
           <List className={classes.lists} component="nav">
             {prayers.map((prayer, i) => (
               <ListItem
@@ -74,7 +74,7 @@ class PrayerList extends Component {
               </ListItem>
             ))}
           </List>
-        </Box>
+        </Card>
       </div>
     )
   }
