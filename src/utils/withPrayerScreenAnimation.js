@@ -1,11 +1,11 @@
 import React from 'react'
 
 import PrayerScreenAnimation from '../contexts/PrayerScreenAnimation'
-import PrayerTime from '../contexts/PrayerTime'
+import Timing from '../contexts/Timing'
 
 const withPrayerScreenAnimation = Component => {
   return class extends React.Component {
-    static contextType = PrayerTime
+    static contextType = Timing
 
     state = {
       scrolled: false,
@@ -16,11 +16,9 @@ const withPrayerScreenAnimation = Component => {
       const { updateTiming } = this.context
       const wheel = Math.round(e.deltaY)
 
-      if (wheel < 0) updateTiming('dzuhur')
-
       this.setState({
         scrolled: wheel > 0,
-      })
+      }, () => !this.state.scrolled && updateTiming('dzuhur'))
     }
 
     handleInitTouch = e => {
@@ -35,11 +33,9 @@ const withPrayerScreenAnimation = Component => {
       let touched = Math.round(e.targetTouches[0].clientY)
       touched -= initTouch
 
-      if (touched > 0) updateTiming('dzuhur')
-
       this.setState({
         scrolled: touched < -120,
-      })
+      }, () => !this.state.scrolled && updateTiming('dzuhur'))
     }
 
     render() {

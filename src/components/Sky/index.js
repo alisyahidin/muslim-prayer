@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core'
 
-import PrayerTime from '../../contexts/PrayerTime'
+import Timing from '../../contexts/Timing'
 import Gradient from './Gradient'
 
 import styles from './styles'
 
 class Sky extends Component {
-  static contextType = PrayerTime
+  static contextType = Timing
 
   render() {
     const { classes } = this.props
-    const { current, next } = this.context.timing
+    const { current, next } = this.context
 
     return (
       <svg className={classes.sky} viewBox="0 0 375 812" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">

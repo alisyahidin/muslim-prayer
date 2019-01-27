@@ -1,34 +1,28 @@
 import React from 'react'
 
-import PrayerTime from '../contexts/PrayerTime'
+import Timing from '../contexts/Timing'
 
-const withPrayerTime = Component => {
+const withTiming = Component => {
   return class extends React.Component {
     state = {
-      timing: {
-        current: 'shubuh',
-        next: undefined,
-      }
+      current: 'shubuh',
+      next: undefined,
     }
 
     updateTiming = prayer => {
       clearTimeout(this.timeoutNext)
 
       this.setState(prevState => ({
-        timing: {
-          current: typeof prevState.timing.next === 'undefined' ? prayer : prevState.timing.next,
-          next: prayer
-        }
+        current: typeof prevState.next === 'undefined' ? prayer : prevState.next,
+        next: prayer
       }))
     }
 
     clearTiming = () => {
       this.timeoutNext = setTimeout(() => {
         this.setState(prevState => ({
-          timing: {
-            current: prevState.timing.next,
-            next: undefined,
-          }
+          current: prevState.next,
+          next: undefined,
         }))
       }, 800)
     }
@@ -38,21 +32,22 @@ const withPrayerTime = Component => {
     }
 
     render() {
-      const { timing } = this.state
+      const { current, next } = this.state
 
       return (
-        <PrayerTime.Provider
+        <Timing.Provider
           value={{
-            timing,
+            current,
+            next,
             clearTiming: this.clearTiming,
             updateTiming: this.updateTiming,
           }}
         >
           <Component />
-        </PrayerTime.Provider>
+        </Timing.Provider>
       )
     }
   }
 }
 
-export default withPrayerTime
+export default withTiming

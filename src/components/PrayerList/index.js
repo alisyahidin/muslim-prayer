@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton'
 import AlarmIcon from '@material-ui/icons/Alarm'
 
 import Box from '../Box/'
-import PrayerTime from '../../contexts/PrayerTime'
+import Timing from '../../contexts/Timing'
 
 import styles from './styles'
 
@@ -37,7 +37,7 @@ const prayers = [
 ]
 
 class PrayerList extends Component {
-  static contextType = PrayerTime
+  static contextType = Timing
 
   updatePrayer = prayer => () => {
     const { updateTiming, clearTiming } = this.context

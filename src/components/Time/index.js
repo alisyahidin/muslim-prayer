@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
-import PrayerTimeContext from '../../contexts/PrayerTime'
+import TimingContext from '../../contexts/Timing'
 
 import Wrapper from './Wrapper'
 import Title from './Title'
@@ -18,12 +18,12 @@ class Time extends Component {
     const { scrolled } = this.context
 
     return (
-      <PrayerTimeContext.Consumer>
-        {prayer => {
+      <TimingContext.Consumer>
+        {timing => {
           return (
             <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
               <Title pose={scrolled ? 'left' : 'center'}>
-                {prayer.timing.current}
+                {timing.current}
               </Title>
               <Clock pose={scrolled ? 'left' : 'center'}>
                 12:07
@@ -34,7 +34,7 @@ class Time extends Component {
             </Wrapper>
           )
         }}
-      </PrayerTimeContext.Consumer>
+      </TimingContext.Consumer>
     )
   }
 }
