@@ -6,7 +6,7 @@ import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import Screen from './Screen.js'
 import Sky from '../Sky/'
 import Mosque from '../Mosque/'
-import Clouds from '../Clouds/'
+import SkyObject from '../SkyObject/'
 import Time from '../Time/'
 
 import styles from './styles'
@@ -26,7 +26,7 @@ class PrayerScreen extends Component {
       >
         <Sky />
         <Time />
-        <Clouds />
+        <SkyObject />
         <Mosque />
       </Screen>
     )

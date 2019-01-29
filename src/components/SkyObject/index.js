@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
-import Cloud from './Cloud'
+import Obj from './Obj'
 import Sun from '../Sun/'
 
 import styles from './styles'
 import { clouds } from '../../constants/'
 
-class Clouds extends Component {
+class SkyObject extends Component {
   static contextType = PrayerScreenAnimation
 
   render() {
@@ -19,7 +19,7 @@ class Clouds extends Component {
     return (
       <>
         { clouds.map((cloud, i) => (
-          <Cloud
+          <Obj
             key={i}
             i={i+1}
             {...cloud}
@@ -34,8 +34,8 @@ class Clouds extends Component {
   }
 }
 
-Clouds.propTypes = {
+SkyObject.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Clouds)
+export default withStyles(styles)(SkyObject)
