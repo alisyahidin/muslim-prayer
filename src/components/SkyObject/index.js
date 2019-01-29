@@ -3,33 +3,39 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
-import Obj from './Obj'
-import Sun from '../Sun/'
+import Timing from '../../contexts/Timing'
+import Object from './Object'
 
+import objects from './consts'
 import styles from './styles'
-import { clouds } from '../../constants/'
 
 class SkyObject extends Component {
-  static contextType = PrayerScreenAnimation
+  static contextType = Timing
 
   render() {
     const { classes } = this.props
-    const { scrolled } = this.context
+    const { timing } = this.context
 
     return (
-      <>
-        { clouds.map((cloud, i) => (
-          <Obj
-            key={i}
-            i={i+1}
-            {...cloud}
-            pose={scrolled ? 'chibi' : 'normal'}
-            className={classes.cloud}
-            alt="Cloud"
-          />
-        ))}
-        <Sun />
-      </>
+      <PrayerScreenAnimation.Consumer>
+        {({scrolled}) =>
+          objects[timing].map((obj, i) => (
+            <Object
+              key={i}
+              i={i+1}
+              poseKey={timing}
+              size={obj.size}
+              bottom={obj.bottom}
+              right={obj.right}
+              src={obj.src}
+              opacity={obj.opacity}
+              pose={scrolled ? 'chibi' : 'normal'}
+              className={classes.cloud}
+              alt="Sky Object"
+            />
+          ))
+        }
+      </PrayerScreenAnimation.Consumer>
     )
   }
 }
