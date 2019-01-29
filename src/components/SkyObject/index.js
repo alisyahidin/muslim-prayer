@@ -6,7 +6,7 @@ import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import Timing from '../../contexts/Timing'
 import Object from './Object'
 
-import objects from './consts'
+import { skyObjects } from '../../constants/'
 import styles from './styles'
 
 class SkyObject extends Component {
@@ -19,7 +19,7 @@ class SkyObject extends Component {
     return (
       <PrayerScreenAnimation.Consumer>
         {({scrolled}) =>
-          objects[timing].map((obj, i) => (
+          skyObjects[timing].map((obj, i) => (
             <Object
               key={i}
               i={i+1}

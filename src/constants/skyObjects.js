@@ -1,82 +1,16 @@
-import cloud1 from '../../assets/clouds/1.svg'
-import cloud2 from '../../assets/clouds/2.svg'
-import cloud3 from '../../assets/clouds/3.svg'
-import cloud4 from '../../assets/clouds/4.svg'
-import cloud5 from '../../assets/clouds/5.svg'
-import star1 from '../../assets/stars/1.svg'
-import star2 from '../../assets/stars/2.svg'
-import star3 from '../../assets/stars/3.svg'
-import star4 from '../../assets/stars/4.svg'
-import sun from '../../assets/sun/sun.svg'
-import moon from '../../assets/moon/moon.svg'
+import cloud1 from '../assets/clouds/1.svg'
+import cloud2 from '../assets/clouds/2.svg'
+import cloud3 from '../assets/clouds/3.svg'
+import cloud4 from '../assets/clouds/4.svg'
+import cloud5 from '../assets/clouds/5.svg'
+import star1 from '../assets/stars/1.svg'
+import star2 from '../assets/stars/2.svg'
+import star3 from '../assets/stars/3.svg'
+import star4 from '../assets/stars/4.svg'
+import sun from '../assets/sun/sun.svg'
+import moon from '../assets/moon/moon.svg'
 
-export default {
-  noprayer: [
-    {
-      size: 130,
-      bottom: -20,
-      right: 60,
-      src: sun
-    },
-    {
-      size: 100,
-      bottom: 25,
-      right: 60,
-      src: moon,
-      opacity: 0,
-    },
-    {
-      size: 90,
-      bottom: 28,
-      right: 57,
-      src: cloud2
-    },
-    {
-      size: 100,
-      bottom: 36,
-      right: 12,
-      src: cloud1
-    },
-    {
-      size: 75,
-      bottom: 42,
-      right: 47,
-      src: cloud3
-    },
-    {
-      size: 80,
-      bottom: 54,
-      right: 38,
-      src: cloud4
-    },
-    {
-      size: 90,
-      bottom: 47,
-      right: 17,
-      src: cloud5
-    },
-    {
-      size: 50,
-      bottom: 47,
-      right: 17,
-      src: star1,
-      opacity: 0,
-    },
-    {
-      size: 50,
-      bottom: 44,
-      right: 37,
-      src: star2,
-      opacity: 0,
-    },
-    {
-      size: 50,
-      bottom: 48,
-      right: 34,
-      src: star3,
-      opacity: 0,
-    },
-  ],
+const prayers = {
   shubuh: [
     {
       size: 130,
@@ -419,3 +353,9 @@ export default {
     },
   ],
 }
+
+const noprayer = () => {
+  return prayers.maghrib
+}
+
+export default Object.assign(prayers, {noprayer: noprayer()})
