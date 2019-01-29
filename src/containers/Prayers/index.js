@@ -25,7 +25,7 @@ class Prayers extends Component {
           </IconButton>
         </div>
         <Card className={classes.dates}>
-          <div className={classes.innerdates}>
+          <div className={classes.innerDates}>
             {dates.map(date => <DateCard key={date} date={date} />)}
           </div>
         </Card>

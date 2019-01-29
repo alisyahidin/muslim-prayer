@@ -2,6 +2,11 @@ import React from 'react'
 import Stop from './Stop'
 
 const sky = {
+  noprayer: {
+    bottom: '#f26fe5',
+    middle: '#6faef1',
+    top: '#f0e86f'
+  },
   dzuhur: {
     bottom: '#C7EEFF',
     middle: '#7ED2F6',

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core'
+import Moment from 'react-moment'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import PrayerTimeContext from '../../contexts/PrayerTime'
+import TimingContext from '../../contexts/Timing'
 
 import Wrapper from './Wrapper'
 import Title from './Title'
@@ -19,21 +21,23 @@ class Time extends Component {
 
     return (
       <PrayerTimeContext.Consumer>
-        {({getPrayerNow}) => {
-          return (
-            <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
-              <Title pose={scrolled ? 'left' : 'center'}>
-                {getPrayerNow().name}
-              </Title>
-              <Clock pose={scrolled ? 'left' : 'center'}>
-                {getPrayerNow().time}
-              </Clock>
-              <Remaining className={classes.timeLeft} pose={scrolled ? 'left' : 'center'}>
-                55 minutes left
-              </Remaining>
-            </Wrapper>
-          )
-        }}
+        {({getPrayerNow}) => (
+          <TimingContext.Consumer>
+            {({current}) => (
+              <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
+                <Title pose={scrolled ? 'left' : 'center'}>
+                  {getPrayerNow(current).name || 'Have a nice day'}
+                </Title>
+                <Clock pose={scrolled ? 'left' : 'center'}>
+                  {getPrayerNow(current).time || <Moment format='HH:mm' />}
+                </Clock>
+                <Remaining className={classes.timeLeft} pose={scrolled ? 'left' : 'center'}>
+                  55 minutes left
+                </Remaining>
+              </Wrapper>
+            )}
+          </TimingContext.Consumer>
+        )}
       </PrayerTimeContext.Consumer>
     )
   }

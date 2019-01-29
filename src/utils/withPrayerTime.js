@@ -1,12 +1,9 @@
 import React from 'react'
 
-import Timing from '../contexts/Timing'
 import PrayerTime from '../contexts/PrayerTime'
 
 const withPrayerTime = Component => {
   return class extends React.Component {
-    static contextType = Timing
-
     state = {
       prayers: [
         {
@@ -37,17 +34,16 @@ const withPrayerTime = Component => {
       ]
     }
 
-    getPrayerNow = () => {
+    getPrayerNow = prayer => {
       // filter state prayers id by timing.curent
-      const { current } = this.context
       const { prayers } = this.state
 
-      const now = prayers.filter(prayer => prayer.id === current)
+      const now = prayers.filter(prayerState => prayerState.id === prayer)
 
       return now.length > 0 ? now[0] : {
-        'id': 'shubuh',
-        'name': 'Shubuh',
-        'time': '05:03'
+        'id': 'noprayer',
+        'name': '',
+        'time': ''
       }
     }
 

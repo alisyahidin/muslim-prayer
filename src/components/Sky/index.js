@@ -12,7 +12,7 @@ class Sky extends Component {
   componentWillUnmount() {
     const { updateTiming } = this.context
 
-    updateTiming('shubuh')
+    updateTiming()
   }
 
   render() {

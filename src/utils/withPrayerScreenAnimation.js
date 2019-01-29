@@ -40,8 +40,7 @@ const withPrayerScreenAnimation = Component => {
       const { updateTiming, clearTiming } = this.context
 
       if (nextState.scrolled === false && this.state.scrolled === true) {
-        clearTiming()
-        updateTiming('shubuh')
+        updateTiming()
         clearTiming()
       }
 

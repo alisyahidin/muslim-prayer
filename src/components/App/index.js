@@ -33,8 +33,8 @@ class App extends Component {
   }
 }
 
-export default withTiming(
-  withPrayerTime(
+export default withPrayerTime(
+  withTiming(
     withPrayerScreenAnimation(
       withStyles(styles)(App)
     )

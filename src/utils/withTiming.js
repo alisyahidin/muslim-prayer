@@ -1,20 +1,25 @@
 import React from 'react'
 
+import PrayerTime from '../contexts/PrayerTime'
 import Timing from '../contexts/Timing'
 
 const withTiming = Component => {
   return class extends React.Component {
+    static contextType = PrayerTime
+
     state = {
-      current: 'shubuh',
+      current: 'noprayer',
       next: undefined,
     }
 
     updateTiming = prayer => {
       clearTimeout(this.timeoutNext)
 
+      const { getPrayerNow } = this.context
+
       this.setState(prevState => ({
-        current: typeof prevState.next === 'undefined' ? prayer : prevState.next,
-        next: prayer
+        current: typeof prevState.next === 'undefined' ? getPrayerNow(prayer).id : prevState.next,
+        next: getPrayerNow(prayer).id
       }))
     }
 

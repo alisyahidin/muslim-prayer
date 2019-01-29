@@ -11,7 +11,7 @@ export default theme => ({
     padding: '15px 10px',
     margin: 'unset',
   },
-  innerPrayerBoxes: {
+  innerDates: {
     height: '100%',
     width: '100%',
     padding: 0,

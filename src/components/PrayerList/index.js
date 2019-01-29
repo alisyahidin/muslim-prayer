@@ -9,32 +9,10 @@ import IconButton from '@material-ui/core/IconButton'
 import AlarmIcon from '@material-ui/icons/Alarm'
 
 import Card from '../Card/'
+import PrayerTimeContext from '../../contexts/PrayerTime'
 import Timing from '../../contexts/Timing'
 
 import styles from './styles'
-
-const prayers = [
-  {
-    id: 'shubuh',
-    name: 'Shubuh'
-  },
-  {
-    id: 'dzuhur',
-    name: 'Dzuhur',
-  },
-  {
-    id: 'ashar',
-    name: 'Ashar',
-  },
-  {
-    id: 'maghrib',
-    name: 'Maghrib',
-  },
-  {
-    id: 'isya',
-    name: 'Isya',
-  },
-]
 
 class PrayerList extends Component {
   static contextType = Timing
@@ -50,32 +28,36 @@ class PrayerList extends Component {
     const { classes } = this.props
 
     return (
-      <div className={classes.prayerList}>
-        <Card>
-          <List className={classes.lists} component="nav">
-            {prayers.map((prayer, i) => (
-              <ListItem
-                key={i}
-                onClick={this.updatePrayer(prayer.id)}
-                className={classes.list}
-                button
-              >
-                <ListItemText
-                  classes={{
-                    primary: classes.text
-                  }}
-                  primary={prayer.name}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton className={classes.icon}>
-                    <AlarmIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>
-            ))}
-          </List>
-        </Card>
-      </div>
+      <PrayerTimeContext.Consumer>
+        {({prayers}) => (
+        <div className={classes.prayerList}>
+          <Card>
+            <List className={classes.lists} component="nav">
+              {prayers.map((prayer, i) => (
+                <ListItem
+                  key={i}
+                  onClick={this.updatePrayer(prayer.id)}
+                  className={classes.list}
+                  button
+                >
+                  <ListItemText
+                    classes={{
+                      primary: classes.text
+                    }}
+                    primary={prayer.name}
+                  />
+                  <ListItemSecondaryAction>
+                    <IconButton className={classes.icon}>
+                      <AlarmIcon />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              ))}
+            </List>
+          </Card>
+        </div>
+        )}
+      </PrayerTimeContext.Consumer>
     )
   }
 }
