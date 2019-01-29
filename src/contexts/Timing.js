@@ -1,13 +1,9 @@
 import { createContext } from 'react'
 
 const defaultContext = {
-  current: undefined,
-  next: undefined,
+  timing: undefined,
   updateTiming: prayer => {
     console.log('from default updateTiming Timing.js')
-  },
-  clearTiming: () => {
-    console.log('from default clearTiming Timing.js')
   }
 }
 

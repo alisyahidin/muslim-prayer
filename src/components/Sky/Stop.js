@@ -3,20 +3,13 @@ import posed from 'react-pose'
 const easing = [.10, .60, .40, 1]
 
 const Stop = posed.stop({
-  current: {
-    stopColor: ({current}) => current,
+  color: {
+    stopColor: ({color}) => color,
     transition: {
       ease: easing,
-      duration: 800,
+      duration: 1400,
     }
-  },
-  next: {
-    stopColor: ({next}) => next,
-    transition: {
-      ease: easing,
-      duration: 800,
-    }
-  },
+  }
 })
 
 export default Stop

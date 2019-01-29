@@ -8,43 +8,24 @@ const withTiming = Component => {
     static contextType = PrayerTime
 
     state = {
-      current: 'noprayer',
-      next: undefined,
+      timing: 'noprayer',
     }
 
     updateTiming = prayer => {
-      clearTimeout(this.timeoutNext)
-
       const { getPrayerNow } = this.context
 
       this.setState(prevState => ({
-        current: typeof prevState.next === 'undefined' ? getPrayerNow(prayer).id : prevState.next,
-        next: getPrayerNow(prayer).id
+        timing: getPrayerNow(prayer).id
       }))
     }
 
-    clearTiming = () => {
-      this.timeoutNext = setTimeout(() => {
-        this.setState(prevState => ({
-          current: prevState.next,
-          next: undefined,
-        }))
-      }, 800)
-    }
-
-    componentWillUnmount() {
-      clearTimeout(this.timeoutNext)
-    }
-
     render() {
-      const { current, next } = this.state
+      const { timing } = this.state
 
       return (
         <Timing.Provider
           value={{
-            current,
-            next,
-            clearTiming: this.clearTiming,
+            timing,
             updateTiming: this.updateTiming,
           }}
         >

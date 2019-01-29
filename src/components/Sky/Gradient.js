@@ -2,6 +2,7 @@ import React from 'react'
 import Stop from './Stop'
 
 const sky = {
+  // Set background depends on time
   noprayer: {
     bottom: '#f26fe5',
     middle: '#6faef1',
@@ -34,23 +35,23 @@ const sky = {
   }
 }
 
-const Gradient = ({ current, next }) => (
+const Gradient = ({ timing }) => (
   <>
     <Stop
-      pose={typeof next !== 'undefined' ? 'next' : 'current'}
-      current={typeof current === 'undefined' ? '#FFF' : sky[current].bottom}
-      next={typeof next === 'undefined' ? '#FFF' : sky[next].bottom}
+      pose={'color'}
+      poseKey={timing}
+      color={sky[timing].bottom}
     />
     <Stop
-      pose={typeof next !== 'undefined' ? 'next' : 'current'}
-      current={typeof current === 'undefined' ? '#FFF' : sky[current].middle}
-      next={typeof next === 'undefined' ? '#FFF' : sky[next].middle}
+      pose={'color'}
+      poseKey={timing}
+      color={sky[timing].middle}
       offset="0.5"
     />
     <Stop
-      pose={typeof next !== 'undefined' ? 'next' : 'current'}
-      current={typeof current === 'undefined' ? '#FFF' : sky[current].top}
-      next={typeof next === 'undefined' ? '#FFF' : sky[next].top}
+      pose={'color'}
+      poseKey={timing}
+      color={sky[timing].top}
       offset="1"
     />
   </>
