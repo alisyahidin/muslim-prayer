@@ -3,25 +3,43 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
+import Timing from '../../contexts/Timing'
+import MosqueWrapper from './MosqueWrapper'
 import MosqueImg from './MosqueImg'
 
-import mosque from '../../assets/mosque/mosque_day.svg'
+import mosqueDay from '../../assets/mosque/mosque_day.svg'
+import mosqueNight from '../../assets/mosque/mosque_night.svg'
 import styles from './styles'
 
 class Mosque extends Component {
-  static contextType = PrayerScreenAnimation
+  static contextType = Timing
 
   render() {
     const { classes } = this.props
-    const { scrolled } = this.context
+    const { timing } = this.context
 
     return (
-      <MosqueImg
-        className={classes.mosque}
-        pose={scrolled ? 'chibi' : 'normal'}
-        src={mosque}
-        alt="Mosque"
-      />
+      <PrayerScreenAnimation.Consumer>
+        {({scrolled}) => (
+          <MosqueWrapper
+            className={classes.wrapper}
+            pose={scrolled ? 'chibi' : 'normal'}
+          >
+            <MosqueImg
+              className={classes.mosque}
+              pose={(timing === 'dzuhur' || timing === 'ashar') ? 'show' : 'hide'}
+              src={mosqueDay}
+              alt="Mosque"
+            />
+            <MosqueImg
+              className={classes.mosque}
+              pose={(timing === 'dzuhur' || timing === 'ashar') ? 'hide' : 'show'}
+              src={mosqueNight}
+              alt="Mosque"
+            />
+          </MosqueWrapper>
+        )}
+      </PrayerScreenAnimation.Consumer>
     )
   }
 }

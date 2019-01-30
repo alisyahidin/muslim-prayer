@@ -2,7 +2,7 @@ import posed from 'react-pose'
 
 const easing = [.10, .60, .40, 1]
 
-const Clock = posed.h2({
+const Clock = posed.h3({
   center: {
     paddingLeft: 0,
     width: '100%',

@@ -7,8 +7,7 @@ export default theme => ({
       cursor: 'default'
     }
   },
-  timeLeft: {
-    marginTop: 8,
-    fontSize: '0.7em',
+  timing: {
+    marginTop: theme.spacing.unit / 2,
   }
 })

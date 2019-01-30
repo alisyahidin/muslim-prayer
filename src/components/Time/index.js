@@ -25,15 +25,12 @@ class Time extends Component {
           <TimingContext.Consumer>
             {({timing}) => (
               <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
-                <Title pose={scrolled ? 'left' : 'center'}>
+                <Title>
                   {getPrayerNow(timing).name || 'Have a nice day'}
                 </Title>
-                <Clock pose={scrolled ? 'left' : 'center'}>
+                <Clock className={classes.timing}>
                   {getPrayerNow(timing).time || <Moment format='HH:mm' />}
                 </Clock>
-                <Remaining className={classes.timeLeft} pose={scrolled ? 'left' : 'center'}>
-                  55 minutes left
-                </Remaining>
               </Wrapper>
             )}
           </TimingContext.Consumer>
