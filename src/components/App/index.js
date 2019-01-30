@@ -19,6 +19,12 @@ class App extends Component {
     installed: false
   }
 
+  handleSetupSave = () => {
+    this.setState({
+      installed: true
+    })
+  }
+
   componentDidMount() {
     // check DB is has configs
   }
@@ -31,7 +37,7 @@ class App extends Component {
       <Router>
         <div className={classes.container}>
           <div className={classes.body}>
-            <Setup installed={installed} />
+            <Setup installed={installed} handleSetupSave={this.handleSetupSave} />
 
             <Route path="/" exact component={Home} />
             <Route path="/prayers" exact component={Prayers} />

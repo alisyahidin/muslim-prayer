@@ -43,14 +43,12 @@ class SetupModal extends React.Component {
   }
 
   handleSave = () => {
+    const { handleSetupSave } = this.props
+
     this.setState({
       saving: true
     }, () => {
-      this.timer = setTimeout(() => {
-        this.setState({
-          open: false,
-        })
-      }, 2000)
+      this.timer = setTimeout(() => handleSetupSave(), 2000)
     })
   }
 
