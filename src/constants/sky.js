@@ -26,10 +26,14 @@ const prayerSky = {
   }
 }
 
-const noprayer = () => {
-  return prayerSky.maghrib
+const day = () => {
+  return prayerSky.dzuhur
 }
 
-const sky = Object.assign(prayerSky, { noprayer: noprayer()})
+const night = () => {
+  return prayerSky.isya
+}
+
+const sky = Object.assign(prayerSky, { day: day(), night: night() })
 
 export default sky

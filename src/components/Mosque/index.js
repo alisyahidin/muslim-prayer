@@ -27,13 +27,13 @@ class Mosque extends Component {
           >
             <MosqueImg
               className={classes.mosque}
-              pose={(timing === 'dzuhur' || timing === 'ashar') ? 'show' : 'hide'}
+              pose={(timing === 'dzuhur' || timing === 'ashar' || timing === 'day') ? 'show' : 'hide'}
               src={mosqueDay}
               alt="Mosque"
             />
             <MosqueImg
               className={classes.mosque}
-              pose={(timing === 'dzuhur' || timing === 'ashar') ? 'hide' : 'show'}
+              pose={(timing === 'dzuhur' || timing === 'ashar' || timing === 'day') ? 'hide' : 'show'}
               src={mosqueNight}
               alt="Mosque"
             />

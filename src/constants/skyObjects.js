@@ -354,8 +354,12 @@ const prayers = {
   ],
 }
 
-const noprayer = () => {
-  return prayers.maghrib
+const day = () => {
+  return prayers.dzuhur
 }
 
-export default Object.assign(prayers, {noprayer: noprayer()})
+const night = () => {
+  return prayers.isya
+}
+
+export default Object.assign(prayers, { day: day(), night: night() })

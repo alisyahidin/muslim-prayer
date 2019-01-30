@@ -8,7 +8,7 @@ const withTiming = Component => {
     static contextType = PrayerTime
 
     state = {
-      timing: 'noprayer',
+      timing: 'day',
     }
 
     updateTiming = prayer => {

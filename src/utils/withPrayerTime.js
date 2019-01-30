@@ -41,7 +41,7 @@ const withPrayerTime = Component => {
       const now = prayers.filter(prayerState => prayerState.id === prayer)
 
       return now.length > 0 ? now[0] : {
-        'id': 'noprayer',
+        'id': 'day',
         'name': '',
         'time': ''
       }
