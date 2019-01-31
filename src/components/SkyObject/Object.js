@@ -1,9 +1,14 @@
 import posed from 'react-pose'
 import PropTypes from 'prop-types'
+import { spring } from 'popmotion'
 
 const easing = [.10, .60, .40, 1]
 
 const Obj = posed.img({
+  draggable: true,
+  dragEnd: {
+    transition: spring
+  },
   normal: {
     opacity: ({opacity}) => opacity,
     width: ({size}) => `${(23*size)/100}%`,

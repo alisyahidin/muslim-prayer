@@ -5,8 +5,8 @@ export default theme => ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 3,
@@ -14,9 +14,22 @@ export default theme => ({
     borderRadius: 10,
     transition: 'all 400ms ease-out'
   },
+  loader: {
+    position: 'absolute',
+  },
+  wrapper: {
+    boxSizing: 'content-box',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   title: {
+    fontSize: '1rem',
     textAlign: 'center',
-    marginBottom: theme.spacing.unit * 2,
+    flexGrow: 0.5,
   },
   button: {
     boxShadow: 'none'

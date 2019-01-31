@@ -1,8 +1,7 @@
 export default theme => ({
   root: {
-    minWidth: 250,
+    width: '100%',
     flexGrow: 1,
-    marginBottom: theme.spacing.unit * 3,
   },
   input: {
     display: 'flex',

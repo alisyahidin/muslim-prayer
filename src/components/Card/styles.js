@@ -4,6 +4,7 @@ export default theme => ({
     height: '100%',
     padding: '15px',
     borderRadius: 10,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
+    boxShadow: '0px 0px 50px #E2E2E2'
   }
 })

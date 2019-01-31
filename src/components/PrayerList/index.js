@@ -25,18 +25,22 @@ class PrayerList extends Component {
 
   render() {
     const { classes } = this.props
-
+    const { timing } = this.context
     return (
       <PrayerTimeContext.Consumer>
         {({prayers}) => (
         <div className={classes.prayerList}>
           <Card>
-            <List className={classes.lists} component="nav">
+            <List className={classes.lists} component="ul">
               {prayers.map((prayer, i) => (
                 <ListItem
+                  selected={timing === prayer.id}
                   key={i}
                   onClick={this.updatePrayer(prayer.id)}
                   className={classes.list}
+                  classes={{
+                    selected: classes.listSelected
+                  }}
                   button
                 >
                   <ListItemText

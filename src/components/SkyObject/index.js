@@ -30,7 +30,7 @@ class SkyObject extends Component {
               src={obj.src}
               opacity={obj.opacity}
               pose={scrolled ? 'chibi' : 'normal'}
-              className={classes.cloud}
+              className={classes.skyObject}
               alt="Sky Object"
             />
           ))

@@ -3,6 +3,7 @@ export default theme => ({
     textAlign: 'center',
     whiteSpace: 'nowrap',
     color: '#FFF',
+    zIndex: -1,
     '&:hover': {
       cursor: 'default'
     }

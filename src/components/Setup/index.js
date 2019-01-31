@@ -8,12 +8,15 @@ import Fab from '@material-ui/core/Fab'
 import SaveIcon from '@material-ui/icons/Save'
 
 import Select from '../Select/'
+import Card from './Card'
+import Wrapper from './Wrapper'
+import Loader from './Loader'
+
 import styles from './styles'
 
 const countries = [
-  { label: 'Afghanistan' },
   { label: 'Indonesia' },
-  { label: 'Brunei Darussalam' },
+  { label: 'Palestine' },
 ].map(suggestion => ({
   value: suggestion.label,
   label: suggestion.label,
@@ -74,39 +77,37 @@ class SetupModal extends React.Component {
         aria-describedby="setup-dialog-description"
         open={!installed}
       >
-        <div className={classes.paper}>
-          { prepare && <CircularProgress /> }
-          { !prepare && (
-            <>
-              <Typography className={classes.title} variant="h6" id="modal-title">
-                Setup Location
-              </Typography>
-              <Select
-                value={country}
-                placeholder="Country"
-                options={countries}
-                onChange={this.handleSelect('country')}
-              />
-              <Select
-                value={city}
-                placeholder="City"
-                options={cities}
-                onChange={this.handleSelect('city')}
-              />
-              <Fab
-                onClick={this.handleSave}
-                className={classes.button}
-                color="primary"
-                variant="extended"
-                aria-label="Save"
-                disabled={disabled}
-              >
-                <SaveIcon className={classes.extendedIcon} />
-                {saving ? 'Saving' : 'Save'}
-              </Fab>
-            </>
-          ) }
-        </div>
+        <Card pose={prepare ? 'small' : 'grow'} className={classes.paper}>
+          <Loader className={classes.loader}><CircularProgress /></Loader>
+          <Wrapper className={classes.wrapper}>
+            <Typography className={classes.title} id="modal-title">
+              Select Location
+            </Typography>
+            <Select
+              value={country}
+              placeholder="Country"
+              options={countries}
+              onChange={this.handleSelect('country')}
+            />
+            <Select
+              value={city}
+              placeholder="City"
+              options={cities}
+              onChange={this.handleSelect('city')}
+            />
+            <Fab
+              onClick={this.handleSave}
+              className={classes.button}
+              color="primary"
+              variant="extended"
+              aria-label="Save"
+              disabled={disabled}
+            >
+              <SaveIcon className={classes.extendedIcon} />
+              {saving ? 'Saving' : 'Save'}
+            </Fab>
+          </Wrapper>
+        </Card>
       </Modal>
     )
   }

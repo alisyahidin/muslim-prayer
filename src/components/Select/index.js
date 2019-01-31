@@ -146,6 +146,7 @@ MySelect.propTypes = {
   onChange: PropTypes.func.isRequired,
   options: PropTypes.array.isRequired,
   placeholder: PropTypes.string.isRequired,
+  className: PropTypes.string,
   value: PropTypes.object,
 }
 

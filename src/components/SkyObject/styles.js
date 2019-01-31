@@ -1,5 +1,8 @@
 export default theme => ({
-  cloud: {
+  skyObject: {
     position: 'absolute',
+    '&:hover': {
+      cursor: 'move',
+    }
   }
 })

@@ -17,6 +17,9 @@ export default theme => ({
   list: {
     borderRadius: '8px',
   },
+  listSelected: {
+    background: 'rgba(0, 0, 0, 0.05) !important'
+  },
   text: {
     color: '#979BB1',
     fontSize: smallScreen ? '0.8rem' : '1rem'
