@@ -95,16 +95,20 @@ const objectsInDay = (bottom, sunResource = sun) => (
 const day = () => {
   let objects = []
 
-  if (betweenHours('06:30', '7:40') || betweenHours('16:00', '17:00')) {
+  if (betweenHours('06:30', '7:40')) {
     objects = objectsInDay(10)
   }
 
-  if (betweenHours('7:40', '10:00') || betweenHours('13:00', '16:00')) {
+  if (betweenHours('16:00', '17:00')) {
+    objects = objectsInDay(18)
+  }
+
+  if (betweenHours('7:40', '10:00') || betweenHours('14:00', '16:00')) {
     objects = objectsInDay(24)
   }
 
   if (betweenHours('10:00', '11:30') || betweenHours('12:30', '14:00')) {
-    objects = objectsInDay(40)
+    objects = objectsInDay(18)
   }
 
   return objects

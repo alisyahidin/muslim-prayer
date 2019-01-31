@@ -3,8 +3,7 @@ import { withStyles } from '@material-ui/core'
 import Moment from 'react-moment'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
-import PrayerTimeContext from '../../contexts/PrayerTime'
-import TimingContext from '../../contexts/Timing'
+import Timing from '../../contexts/Timing'
 
 import Wrapper from './Wrapper'
 import Title from './Title'
@@ -20,22 +19,18 @@ class Time extends Component {
     const { scrolled } = this.context
 
     return (
-      <PrayerTimeContext.Consumer>
-        {({getPrayerNow}) => (
-          <TimingContext.Consumer>
-            {({timing}) => (
-              <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
-                <Title>
-                  {getPrayerNow(timing).name || 'Have a nice day'}
-                </Title>
-                <Clock className={classes.timing}>
-                  {getPrayerNow(timing).time || <Moment format='HH:mm' />}
-                </Clock>
-              </Wrapper>
-            )}
-          </TimingContext.Consumer>
+      <Timing.Consumer>
+        {({timing, getPrayer}) => (
+          <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
+            <Title>
+              {getPrayer().name || 'Have a nice day'}
+            </Title>
+            <Clock className={classes.timing}>
+              {getPrayer().time || <Moment format='HH:mm' />}
+            </Clock>
+          </Wrapper>
         )}
-      </PrayerTimeContext.Consumer>
+      </Timing.Consumer>
     )
   }
 }

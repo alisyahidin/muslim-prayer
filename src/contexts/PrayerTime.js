@@ -2,8 +2,8 @@ import { createContext } from 'react'
 
 const defaultContext = {
   prayers: [],
-  getPrayerNow: () => {
-    console.log('from default getPrayerNow PrayerTime.js')
+  getPrayerData: () => {
+    console.log('from default getPrayerData PrayerTime.js')
   }
 }
 

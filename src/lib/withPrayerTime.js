@@ -34,17 +34,13 @@ const withPrayerTime = Component => {
       ]
     }
 
-    getPrayerNow = prayer => {
+    getPrayerData = prayer => {
       // filter state prayers id by timing.curent
       const { prayers } = this.state
 
       const now = prayers.filter(prayerState => prayerState.id === prayer)
 
-      return now.length > 0 ? now[0] : {
-        'id': 'day',
-        'name': '',
-        'time': ''
-      }
+      return now.length > 0 ? now[0] : null
     }
 
     componentDidMount() {
@@ -58,7 +54,7 @@ const withPrayerTime = Component => {
         <PrayerTime.Provider
           value={{
             prayers,
-            getPrayerNow: this.getPrayerNow,
+            getPrayerData: this.getPrayerData,
           }}
         >
           <Component />

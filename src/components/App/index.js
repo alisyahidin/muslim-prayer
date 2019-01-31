@@ -12,9 +12,13 @@ import withTiming from '../../lib/withTiming'
 import withPrayerTime from '../../lib/withPrayerTime'
 import withPrayerScreenAnimation from '../../lib/withPrayerScreenAnimation'
 
+import Timing from '../../contexts/Timing'
+
 import styles from './styles'
 
 class App extends Component {
+  static contextType = Timing
+
   state = {
     installed: true
   }
@@ -27,23 +31,31 @@ class App extends Component {
 
   componentDidMount() {
     // check DB is has configs
+    const { finishInitializing } = this.context
+    setTimeout(() => finishInitializing(), 1000)
   }
 
   render() {
     const { classes } = this.props
     const { installed } = this.state
+    const { init } = this.context
 
     return (
       <Router>
         <div className={classes.container}>
           <div className={classes.body}>
-            <Setup installed={installed} handleSetupSave={this.handleSetupSave} />
+            {init && <h1>Checking storage . . .</h1>}
+            {!init && (
+              <>
+                <Setup installed={installed} handleSetupSave={this.handleSetupSave} />
 
-            <Route path="/" exact component={Home} />
-            <Route path="/prayers" exact component={Prayers} />
-            <Route path="/setting" exact component={Setting} />
+                <Route path="/" exact component={Home} />
+                <Route path="/prayers" exact component={Prayers} />
+                <Route path="/setting" exact component={Setting} />
 
-            <Navbar />
+                <Navbar />
+              </>
+            )}
           </div>
         </div>
       </Router>
