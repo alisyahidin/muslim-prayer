@@ -7,16 +7,22 @@ import star1 from '../assets/stars/1.svg'
 import star2 from '../assets/stars/2.svg'
 import star3 from '../assets/stars/3.svg'
 import star4 from '../assets/stars/4.svg'
-import sun from '../assets/sun/sun.svg'
+import sunResource from '../assets/sun/sun.svg'
 import moon from '../assets/moon/moon.svg'
+
+import day from './skyObjectsDay'
+
+const sun = {
+  size: 130,
+  right: 60,
+  src: sunResource
+}
 
 const prayers = {
   shubuh: [
     {
-      size: 130,
+      ...sun,
       bottom: -20,
-      right: 60,
-      src: sun
     },
     {
       size: 100,
@@ -24,6 +30,7 @@ const prayers = {
       right: 60,
       src: moon,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 90,
@@ -38,6 +45,7 @@ const prayers = {
       right: 27,
       src: cloud1,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 75,
@@ -45,6 +53,7 @@ const prayers = {
       right: 44,
       src: cloud3,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 80,
@@ -59,6 +68,7 @@ const prayers = {
       right: 33,
       src: cloud5,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -81,10 +91,8 @@ const prayers = {
   ],
   dzuhur: [
     {
-      size: 130,
-      bottom: 48,
-      right: 60,
-      src: sun
+      ...sun,
+      bottom: 50,
     },
     {
       size: 100,
@@ -92,6 +100,7 @@ const prayers = {
       right: 60,
       src: moon,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 90,
@@ -129,6 +138,7 @@ const prayers = {
       right: 14,
       src: star1,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -136,6 +146,7 @@ const prayers = {
       right: 37,
       src: star2,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -143,14 +154,13 @@ const prayers = {
       right: 30,
       src: star3,
       opacity: 0,
+      zIndex: -2,
     },
   ],
   ashar: [
     {
-      size: 130,
+      ...sun,
       bottom: 27,
-      right: 60,
-      src: sun
     },
     {
       size: 100,
@@ -158,6 +168,7 @@ const prayers = {
       right: 60,
       src: moon,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 90,
@@ -195,6 +206,7 @@ const prayers = {
       right: 27,
       src: star1,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -202,6 +214,7 @@ const prayers = {
       right: 37,
       src: star2,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -209,14 +222,13 @@ const prayers = {
       right: 30,
       src: star3,
       opacity: 0,
+      zIndex: -2,
     },
   ],
   maghrib: [
     {
-      size: 130,
-      bottom: 0,
-      right: 60,
-      src: sun
+      ...sun,
+      bottom: -5,
     },
     {
       size: 100,
@@ -224,6 +236,7 @@ const prayers = {
       right: 60,
       src: moon,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 90,
@@ -261,6 +274,7 @@ const prayers = {
       right: 23,
       src: star1,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -268,6 +282,7 @@ const prayers = {
       right: 37,
       src: star2,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -275,15 +290,13 @@ const prayers = {
       right: 30,
       src: star3,
       opacity: 0,
+      zIndex: -2,
     },
   ],
   isya: [
     {
-      size: 130,
+      ...sun,
       bottom: -20,
-      right: 60,
-      opacity: 0,
-      src: sun
     },
     {
       size: 100,
@@ -297,6 +310,7 @@ const prayers = {
       right: 57,
       src: cloud2,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 100,
@@ -304,6 +318,7 @@ const prayers = {
       right: 11,
       src: cloud1,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 75,
@@ -311,6 +326,7 @@ const prayers = {
       right: 47,
       src: cloud3,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 80,
@@ -318,6 +334,7 @@ const prayers = {
       right: 38,
       src: cloud4,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 90,
@@ -325,6 +342,7 @@ const prayers = {
       right: 17,
       src: cloud5,
       opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
@@ -354,12 +372,8 @@ const prayers = {
   ],
 }
 
-const day = () => {
-  return prayers.dzuhur
-}
-
 const night = () => {
   return prayers.isya
 }
 
-export default Object.assign(prayers, { day: day(), night: night() })
+export default Object.assign(prayers, { day, night: night() })

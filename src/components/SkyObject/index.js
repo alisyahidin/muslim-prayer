@@ -29,6 +29,7 @@ class SkyObject extends Component {
               right={obj.right}
               src={obj.src}
               opacity={obj.opacity}
+              zIndex={obj.zIndex}
               pose={scrolled ? 'chibi' : 'normal'}
               className={classes.skyObject}
               alt="Sky Object"

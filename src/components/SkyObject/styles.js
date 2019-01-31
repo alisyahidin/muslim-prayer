@@ -4,5 +4,6 @@ export default theme => ({
     '&:hover': {
       cursor: 'move',
     }
-  }
+  },
+  zIndex: -1,
 })

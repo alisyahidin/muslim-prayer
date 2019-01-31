@@ -16,7 +16,7 @@ import styles from './styles'
 
 class App extends Component {
   state = {
-    installed: false
+    installed: true
   }
 
   handleSetupSave = () => {

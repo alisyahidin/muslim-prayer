@@ -10,7 +10,7 @@ const MosqueImg = posed.img({
   },
   hide: {
     opacity: 0,
-    zIndex: -1,
+    zIndex: 1,
     transition: {
       ease: easing,
       duration: 900,
@@ -18,7 +18,7 @@ const MosqueImg = posed.img({
   },
   show: {
     opacity: 1,
-    zIndex: 1,
+    zIndex: 2,
     transition: {
       ease: easing,
       duration: 900,

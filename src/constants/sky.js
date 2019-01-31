@@ -1,3 +1,5 @@
+import day from './skyDay'
+
 const prayerSky = {
   dzuhur: {
     bottom: '#C7EEFF',
@@ -26,14 +28,10 @@ const prayerSky = {
   }
 }
 
-const day = () => {
-  return prayerSky.dzuhur
-}
-
 const night = () => {
   return prayerSky.isya
 }
 
-const sky = Object.assign(prayerSky, { day: day(), night: night() })
+const sky = Object.assign(prayerSky, { day, night: night() })
 
 export default sky

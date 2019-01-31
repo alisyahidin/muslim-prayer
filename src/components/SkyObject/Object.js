@@ -11,6 +11,7 @@ const Obj = posed.img({
   },
   normal: {
     opacity: ({opacity}) => opacity,
+    zIndex: ({zIndex}) => zIndex,
     width: ({size}) => `${(23*size)/100}%`,
     bottom: ({bottom}) => `${bottom}%`,
     right: ({right}) => `${right}%`,
@@ -20,6 +21,7 @@ const Obj = posed.img({
     })
   },
   chibi: {
+    zIndex: ({zIndex}) => zIndex,
     opacity: ({opacity}) => opacity,
     width: ({size}) => `${(13*size)/100}%`,
     bottom: ({bottom}) => `${bottom*1.4}%`,
