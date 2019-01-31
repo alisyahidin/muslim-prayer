@@ -11,6 +11,7 @@ import sunResource from '../assets/sun/sun.svg'
 import moon from '../assets/moon/moon.svg'
 
 import day from './skyObjectsDay'
+import night from './skyObjectsNight'
 
 const sun = {
   size: 130,
@@ -362,18 +363,7 @@ const prayers = {
       right: 20,
       src: star3,
     },
-    {
-      size: 50,
-      bottom: 58,
-      right: 50,
-      src: star4,
-      opacity: 1,
-    },
   ],
 }
 
-const night = () => {
-  return prayers.isya
-}
-
-export default Object.assign(prayers, { day, night: night() })
+export default Object.assign(prayers, { day, night })

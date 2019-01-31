@@ -45,7 +45,10 @@ const withTiming = Component => {
     }
 
     componentDidMount() {
-      // update if now !day
+      const { current, next } = this.context
+
+      console.log(current, next)
+
       this.updateTiming()
     }
 

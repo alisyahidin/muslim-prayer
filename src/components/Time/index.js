@@ -20,7 +20,7 @@ class Time extends Component {
 
     return (
       <Timing.Consumer>
-        {({timing, getPrayer}) => (
+        {({getPrayer}) => (
           <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
             <Title>
               {getPrayer().name || 'Have a nice day'}

@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 
 import PrayerTime from '../contexts/PrayerTime'
 
@@ -37,14 +38,23 @@ const withPrayerTime = Component => {
     getPrayerData = prayer => {
       // filter state prayers id by timing.curent
       const { prayers } = this.state
+      const count = prayers.filter(prayerState => prayerState.id === prayer)
 
-      const now = prayers.filter(prayerState => prayerState.id === prayer)
-
-      return now.length > 0 ? now[0] : null
+      return count.length > 0 ? count.shift() : null
     }
 
-    componentDidMount() {
-      // get prayers from DB
+    getCurrentPrayer = () => {
+      const { prayers } = this.state
+      const count = prayers.filter(prayer => moment().isAfter(moment(prayer.time, 'HH:mm')))
+
+      return count.length > 0 ? count.pop() : null
+    }
+
+    getNextPrayer = () => {
+      const { prayers } = this.state
+      const count = prayers.filter(prayer => moment().isBefore(moment(prayer.time, 'HH:mm')))
+
+      return count.length > 0 ? count.shift() : null
     }
 
     render() {
@@ -54,6 +64,8 @@ const withPrayerTime = Component => {
         <PrayerTime.Provider
           value={{
             prayers,
+            current: this.getCurrentPrayer(),
+            next: this.getNextPrayer(),
             getPrayerData: this.getPrayerData,
           }}
         >

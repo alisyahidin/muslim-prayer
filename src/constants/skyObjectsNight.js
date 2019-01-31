@@ -22,79 +22,81 @@ const rand = (min, max) => {
   return Math.floor(Math.random() * max+1) + min
 }
 
-const objectsInDay = (bottom, sunResource = sun) => (
+const objectsInNight = (bottom, sunResource = sun) => (
   [
     {
-      ...sunResource,
-      bottom: bottom,
-    },
-    {
-      size: 100,
-      bottom: 25,
-      right: 60,
-      src: moon,
-      opacity: 0,
-      zIndex: -2,
-    },
-    {
-      size: 90,
-      bottom: 28,
-      right: rand(5, 45),
-      src: cloud2
+      ...sun,
+      bottom: -20,
     },
     {
       size: 100,
       bottom: 35,
-      right: rand(15, 45),
-      src: cloud1
+      right: 60,
+      src: moon
+    },
+    {
+      size: 90,
+      bottom: 28,
+      right: 57,
+      src: cloud2,
+      opacity: 0,
+      zIndex: -2,
+    },
+    {
+      size: 100,
+      bottom: 35,
+      right: 11,
+      src: cloud1,
+      opacity: 0,
+      zIndex: -2,
     },
     {
       size: 75,
       bottom: 42,
-      right: rand(25, 45),
-      src: cloud3
+      right: 47,
+      src: cloud3,
+      opacity: 0,
+      zIndex: -2,
     },
     {
       size: 80,
       bottom: 54,
-      right: rand(25, 45),
-      src: cloud4
+      right: 38,
+      src: cloud4,
+      opacity: 0,
+      zIndex: -2,
     },
     {
       size: 90,
       bottom: 47,
-      right: rand(25, 45),
-      src: cloud5
+      right: 17,
+      src: cloud5,
+      opacity: 0,
+      zIndex: -2,
     },
     {
       size: 50,
-      bottom: 37,
-      right: 14,
+      bottom: 47,
+      right: rand(10, 45),
       src: star1,
-      opacity: 0,
-      zIndex: -2,
     },
     {
       size: 50,
-      bottom: 44,
-      right: 37,
+      bottom: 40,
+      right: rand(10, 45),
       src: star2,
-      opacity: 0,
-      zIndex: -2,
     },
     {
       size: 50,
-      bottom: 45,
-      right: 30,
+      bottom: 60,
+      right: rand(10, 45),
       src: star3,
-      opacity: 0,
-      zIndex: -2,
     },
   ]
 )
 
-const day = () => {
-  return objectsInDay(23)
+const night = () => {
+  return objectsInNight(23)
 }
 
-export default day()
+export default night()
