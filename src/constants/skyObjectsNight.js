@@ -8,7 +8,6 @@ import cloud5 from '../assets/clouds/5.svg'
 import star1 from '../assets/stars/1.svg'
 import star2 from '../assets/stars/2.svg'
 import star3 from '../assets/stars/3.svg'
-import star4 from '../assets/stars/4.svg'
 import sunResource from '../assets/sun/sun.svg'
 import moon from '../assets/moon/moon.svg'
 

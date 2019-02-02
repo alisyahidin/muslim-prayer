@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core'
-import Moment from 'react-moment'
+import { PoseGroup } from 'react-pose'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import Timing from '../../contexts/Timing'
@@ -20,14 +20,19 @@ class Time extends Component {
 
     return (
       <Timing.Consumer>
-        {({getPrayer}) => (
+        {({getPrayer, reminder}) => (
           <Wrapper pose={scrolled ? 'left' : 'center'} className={classes.time}>
-            <Title>
-              {getPrayer().name || 'Have a nice day'}
-            </Title>
-            <Clock className={classes.timing}>
-              {getPrayer().time || <Moment format='HH:mm' />}
-            </Clock>
+            <PoseGroup>
+              <Title key="title">
+                {getPrayer().name}
+              </Title>
+              <Clock key="clock" className={classes.timing}>
+                {getPrayer().time}
+              </Clock>
+              <Remaining key="remaining">
+                {reminder}
+              </Remaining>
+            </PoseGroup>
           </Wrapper>
         )}
       </Timing.Consumer>

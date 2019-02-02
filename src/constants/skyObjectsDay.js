@@ -8,7 +8,6 @@ import cloud5 from '../assets/clouds/5.svg'
 import star1 from '../assets/stars/1.svg'
 import star2 from '../assets/stars/2.svg'
 import star3 from '../assets/stars/3.svg'
-import star4 from '../assets/stars/4.svg'
 import sunResource from '../assets/sun/sun.svg'
 import moon from '../assets/moon/moon.svg'
 
@@ -39,31 +38,31 @@ const objectsInDay = (bottom, sunResource = sun) => (
     {
       size: 90,
       bottom: 28,
-      right: rand(5, 45),
+      right: rand(5, 15),
       src: cloud2
     },
     {
       size: 100,
       bottom: 35,
-      right: rand(15, 45),
+      right: rand(35, 45),
       src: cloud1
     },
     {
       size: 75,
       bottom: 42,
-      right: rand(25, 45),
+      right: rand(15, 35),
       src: cloud3
     },
     {
       size: 80,
       bottom: 54,
-      right: rand(25, 45),
+      right: rand(5, 25),
       src: cloud4
     },
     {
       size: 90,
       bottom: 47,
-      right: rand(25, 45),
+      right: rand(25, 35),
       src: cloud5
     },
     {

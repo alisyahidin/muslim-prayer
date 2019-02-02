@@ -3,6 +3,7 @@ import { createContext } from 'react'
 const defaultContext = {
   timing: undefined,
   init: undefined,
+  reminder: undefined,
   getPrayer: () => {
     console.log('from default getPrayer Timing.js')
   },

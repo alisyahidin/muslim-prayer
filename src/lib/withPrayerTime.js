@@ -1,4 +1,5 @@
 import React from 'react'
+import { interval } from 'rxjs'
 import moment from 'moment'
 
 import PrayerTime from '../contexts/PrayerTime'
@@ -6,6 +7,8 @@ import PrayerTime from '../contexts/PrayerTime'
 const withPrayerTime = Component => {
   return class extends React.Component {
     state = {
+      current: null,
+      next: null,
       prayers: [
         {
           'id': 'shubuh',
@@ -20,7 +23,7 @@ const withPrayerTime = Component => {
         {
           'id': 'ashar',
           'name': 'Ashar',
-          'time': '15:09'
+          'time': '15:00'
         },
         {
           'id': 'maghrib',
@@ -36,36 +39,39 @@ const withPrayerTime = Component => {
     }
 
     getPrayerData = prayer => {
-      // filter state prayers id by timing.curent
       const { prayers } = this.state
       const count = prayers.filter(prayerState => prayerState.id === prayer)
 
       return count.length > 0 ? count.shift() : null
     }
 
-    getCurrentPrayer = () => {
+    getNearestPrayer = () => {
       const { prayers } = this.state
-      const count = prayers.filter(prayer => moment().isAfter(moment(prayer.time, 'HH:mm')))
+      const current = prayers.filter(prayer => moment().isAfter(moment(prayer.time, 'HH:mm')))
+      const next = prayers.filter(prayer => moment().isBefore(moment(prayer.time, 'HH:mm')))
 
-      return count.length > 0 ? count.pop() : null
+      this.setState({
+        current: current.length > 0 ? current.pop() : null,
+        next: next.length > 0 ? next.shift() : null
+      })
     }
 
-    getNextPrayer = () => {
-      const { prayers } = this.state
-      const count = prayers.filter(prayer => moment().isBefore(moment(prayer.time, 'HH:mm')))
-
-      return count.length > 0 ? count.shift() : null
+    componentDidMount() {
+      interval(1000)
+        .subscribe(() => {
+          this.getNearestPrayer()
+        })
     }
 
     render() {
-      const { prayers } = this.state
+      const { prayers, current, next } = this.state
 
       return (
         <PrayerTime.Provider
           value={{
             prayers,
-            current: this.getCurrentPrayer(),
-            next: this.getNextPrayer(),
+            current,
+            next,
             getPrayerData: this.getPrayerData,
           }}
         >
