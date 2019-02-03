@@ -58,7 +58,10 @@ const withTiming = Component => {
       const nextObservable = next !== null
         ? of(moment(next.time, 'HH:mm').diff(moment()))
           .pipe(
-            filter(milliseconds => milliseconds <= ONE_HOURS && milliseconds > 0),
+            filter(milliseconds => {
+              const countDown = next.id === 'isya' ? ONE_HOURS * 1/3 : ONE_HOURS
+              return milliseconds <= countDown && milliseconds > 0
+            }),
             map(time => `${next.name} ${duration(time).humanize(true)}`)
           )
         : empty()
