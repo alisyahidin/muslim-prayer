@@ -29,7 +29,7 @@ class Time extends Component {
               <Clock key="clock" className={classes.timing}>
                 {getPrayer().time}
               </Clock>
-              <Remaining key="remaining">
+              <Remaining key="remaining" className={classes.reminder}>
                 {reminder}
               </Remaining>
             </PoseGroup>

@@ -4,6 +4,7 @@ const easing = [.10, .60, .40, 1]
 
 const Remaining = posed.p({
   center: {
+    opacity: 1,
     paddingLeft: 0,
     width: '100%',
     transition: {
@@ -12,6 +13,7 @@ const Remaining = posed.p({
     }
   },
   left: {
+    opacity: 0,
     paddingLeft: 20,
     width: '0%',
     transition: {

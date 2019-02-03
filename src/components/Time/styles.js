@@ -10,5 +10,8 @@ export default theme => ({
   },
   timing: {
     marginTop: theme.spacing.unit / 2,
+  },
+  reminder: {
+    fontSize: '1rem'
   }
 })

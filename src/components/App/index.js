@@ -20,7 +20,7 @@ class App extends Component {
   static contextType = Timing
 
   state = {
-    installed: true
+    installed: false
   }
 
   handleSetupSave = () => {

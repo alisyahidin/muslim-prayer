@@ -11,12 +11,16 @@ import mosqueDay from '../../assets/mosque/mosque_day.svg'
 import mosqueNight from '../../assets/mosque/mosque_night.svg'
 import styles from './styles'
 
+import { betweenHours } from '../../utils/time'
+
 class Mosque extends Component {
   static contextType = Timing
 
   render() {
     const { classes } = this.props
     const { timing } = this.context
+
+    const conditionTime = timing === 'dzuhur' || timing === 'ashar' || (timing === 'day' && (!betweenHours('18:00', '18:30') && !betweenHours('04:00', '05:00')))
 
     return (
       <PrayerScreenAnimation.Consumer>
@@ -27,13 +31,13 @@ class Mosque extends Component {
           >
             <MosqueImg
               className={classes.mosque}
-              pose={(timing === 'dzuhur' || timing === 'ashar' || timing === 'day') ? 'show' : 'hide'}
+              pose={conditionTime ? 'show' : 'hide'}
               src={mosqueDay}
               alt="Mosque"
             />
             <MosqueImg
               className={classes.mosque}
-              pose={(timing === 'dzuhur' || timing === 'ashar' || timing === 'day') ? 'hide' : 'show'}
+              pose={conditionTime ? 'hide' : 'show'}
               src={mosqueNight}
               alt="Mosque"
             />

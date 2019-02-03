@@ -21,7 +21,7 @@ const rand = (min, max) => {
   return Math.floor(Math.random() * max+1) + min
 }
 
-const objectsInDay = (bottom, sunResource = sun) => (
+const objectsInDay = (bottom = 0, sunResource = sun) => (
   [
     {
       ...sunResource,
@@ -92,8 +92,38 @@ const objectsInDay = (bottom, sunResource = sun) => (
   ]
 )
 
-const day = () => {
-  return objectsInDay(23)
+const day = prayers => {
+  let day = objectsInDay(-20)
+
+  if (betweenHours('05:00', '06:00')) {
+    day = objectsInDay(-5)
+  }
+  if (betweenHours('06:00', '07:00')) {
+    day = objectsInDay(0)
+  }
+  if (betweenHours('07:00', '08:00') || betweenHours('16:30', '17:30')) {
+    day = objectsInDay(10)
+  }
+  if (betweenHours('08:00', '09:00') || betweenHours('15:30', '16:30')) {
+    day = objectsInDay(20)
+  }
+  if (betweenHours('09:00', '10:00')) {
+    day = objectsInDay(30)
+  }
+  if (betweenHours('10:00', '11:00') || betweenHours('13:00', '14:30')) {
+    day = objectsInDay(40)
+  }
+  if (betweenHours('11:00', '13:00')) {
+    day = prayers.dzuhur
+  }
+  if (betweenHours('14:30', '15:30')) {
+    day = prayers.ashar
+  }
+  if (betweenHours('17:30', '18:00')) {
+    day = prayers.maghrib
+  }
+
+  return day
 }
 
-export default day()
+export default day

@@ -365,4 +365,4 @@ const prayers = {
   ],
 }
 
-export default Object.assign(prayers, { day, night })
+export default Object.assign(prayers, { day: day(prayers), night })

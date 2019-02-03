@@ -28,7 +28,7 @@ const withTiming = Component => {
       })
     }
 
-    updateTiming = (prayer) => {
+    updateTiming = prayer => {
       const timing = typeof prayer !== 'undefined'
         ? prayer
         : this.dayOrNight()
@@ -39,7 +39,7 @@ const withTiming = Component => {
     }
 
     dayOrNight = () => {
-      return betweenHours('05:00', '18:30') ? 'day' : 'night'
+      return betweenHours('04:00', '18:30') ? 'day' : 'night'
     }
 
     getPrayer = () => {
@@ -52,7 +52,7 @@ const withTiming = Component => {
       return result
     }
 
-    watchTime = () => {
+    prayerObserver = () => {
       const { current, next } = this.context
 
       const nextObservable = next !== null
@@ -82,14 +82,19 @@ const withTiming = Component => {
       const prayerObservable = merge(currentObservable, nextObservable)
 
       prayerObservable.subscribe(reminder => {
-        console.log(reminder)
         this.setState({reminder})
       })
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+      return this.state.reminder !== nextState.reminder
+    }
+
     componentDidMount() {
-      interval(1000)
-        .subscribe(() => this.watchTime())
+      this.updateTiming()
+
+      interval(2000)
+        .subscribe(() => this.prayerObserver())
     }
 
     render() {

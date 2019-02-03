@@ -29,6 +29,6 @@ const prayerSky = {
   }
 }
 
-const sky = Object.assign(prayerSky, { day, night })
+const sky = Object.assign(prayerSky, { day: day(prayerSky), night })
 
 export default sky
