@@ -8,19 +8,7 @@ const options = {
   vibrate: [1000, 1000, 1000, 1000],
   data: {
     prayer: 'dzuhur'
-  },
-  actions: [
-    {
-      action: 'stop',
-      title: 'Stop adzan',
-      icon: icon
-    },
-    {
-      action: 'close',
-      title: 'Close notification',
-      icon: icon
-    }
-  ]
+  }
 }
 
 export default options
