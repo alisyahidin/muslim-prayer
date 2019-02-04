@@ -33,6 +33,18 @@ class App extends Component {
     // check DB is has configs
     const { finishInitializing } = this.context
     setTimeout(() => finishInitializing(), 1000)
+
+    // Test notification SW
+    if (Notification.permission === 'granted') {
+      navigator.serviceWorker.getRegistration()
+        .then(function(reg) {
+          setTimeout(() => {
+            if (typeof reg !== 'undefined') {
+              reg.showNotification('Hello world!')
+            }
+          }, 3000)
+        });
+    }
   }
 
   render() {
