@@ -18,15 +18,8 @@ const withTiming = Component => {
     static contextType = PrayerTime
 
     state = {
-      init: true,
       timing: 'day',
       reminder: '',
-    }
-
-    finishInitializing = () => {
-      this.setState({
-        init: false
-      })
     }
 
     updateTiming = prayer => {
@@ -116,15 +109,13 @@ const withTiming = Component => {
     }
 
     render() {
-      const { timing, init, reminder } = this.state
+      const { timing, reminder } = this.state
 
       return (
         <Timing.Provider
           value={{
             timing,
-            init,
             reminder,
-            finishInitializing: this.finishInitializing,
             updateTiming: this.updateTiming,
             getPrayer: this.getPrayer,
           }}

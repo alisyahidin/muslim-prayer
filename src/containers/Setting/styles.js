@@ -3,11 +3,13 @@ import { smallScreen, navbarHeight } from '../../constants/'
 export default theme => ({
   setting: {
     boxSizing: 'border-box',
-    background: '#FFF',
     height: '100%',
-    padding: 16,
-    paddingBottom: 16 + navbarHeight,
-    paddingTop: 0,
+    padding: 20,
+    paddingBottom: 20 + navbarHeight
+  },
+  card: {
+    padding: '0px 10px',
+    margin: 'unset',
   },
   header: {
     width: '85%',
@@ -27,7 +29,6 @@ export default theme => ({
   },
   textRoot: {
     padding: 0,
-    paddingLeft: `${theme.spacing.unit * 3}px !important`,
   },
   text: {
     color: '#979BB1',

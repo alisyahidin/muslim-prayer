@@ -15,13 +15,10 @@ import withPrayerTime from '../../lib/withPrayerTime'
 import withPrayerScreenAnimation from '../../lib/withPrayerScreenAnimation'
 
 import { showNotif, checkRequestPermission } from '../../utils/notification'
-import Timing from '../../contexts/Timing'
 
 import styles from './styles'
 
 class App extends Component {
-  static contextType = Timing
-
   state = {
     installed: false
   }
@@ -34,12 +31,9 @@ class App extends Component {
 
   componentDidMount() {
     // check DB is has configs
-    checkRequestPermission()
-
-    const { finishInitializing } = this.context
-    setTimeout(() => finishInitializing(), 1000)
 
     // Test notification SW
+    checkRequestPermission()
     interval(5000)
       .pipe(take(2))
       .subscribe(x => showNotif('Test Notification'))
@@ -48,24 +42,18 @@ class App extends Component {
   render() {
     const { classes } = this.props
     const { installed } = this.state
-    const { init } = this.context
 
     return (
       <Router>
         <div className={classes.container}>
           <div className={classes.body}>
-            {init && <h1>Checking storage . . .</h1>}
-            {!init && (
-              <>
-                <Setup installed={installed} handleSetupSave={this.handleSetupSave} />
+            <Setup installed={installed} handleSetupSave={this.handleSetupSave} />
 
-                <Route path="/" exact component={Home} />
-                <Route path="/prayers" exact component={Prayers} />
-                <Route path="/setting" exact component={Setting} />
+            <Route path="/" exact component={Home} />
+            <Route path="/prayers" exact component={Prayers} />
+            <Route path="/setting" exact component={Setting} />
 
-                <Navbar />
-              </>
-            )}
+            <Navbar />
           </div>
         </div>
       </Router>

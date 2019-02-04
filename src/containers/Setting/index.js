@@ -7,6 +7,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
+import Card from '../../components/Card/'
 import menu from './menu'
 import styles from './styles'
 
@@ -16,26 +17,28 @@ class Setting extends Component {
 
     return (
       <div className={classes.setting}>
-        <List
-          className={classes.lists}
-          component="nav"
-          subheader={<ListSubheader className={classes.header} component="div">Settings</ListSubheader>}
-        >
-          {menu.map((menu, i) => (
-            <ListItem key={i} className={classes.list} button>
-              <ListItemText
-                classes={{
-                  root: classes.textRoot,
-                  primary: classes.text
-                }}
-                primary={menu.name}
-              />
-              <ListItemIcon>
-                {menu.icon(classes.icon)}
-              </ListItemIcon>
-            </ListItem>
-          ))}
-        </List>
+        <Card className={classes.card}>
+          <List
+            className={classes.lists}
+            component="nav"
+            subheader={<ListSubheader className={classes.header} component="div">Settings</ListSubheader>}
+          >
+            {menu.map((menu, i) => (
+              <ListItem key={i} className={classes.list} button>
+                <ListItemIcon>
+                  {menu.icon(classes.icon)}
+                </ListItemIcon>
+                <ListItemText
+                  classes={{
+                    root: classes.textRoot,
+                    primary: classes.text
+                  }}
+                  primary={menu.name}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </Card>
       </div>
     )
   }
