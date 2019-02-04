@@ -35,16 +35,18 @@ class App extends Component {
     setTimeout(() => finishInitializing(), 1000)
 
     // Test notification SW
-    if (Notification.permission === 'granted') {
-      navigator.serviceWorker.getRegistration()
-        .then(function(reg) {
-          setTimeout(() => {
-            if (typeof reg !== 'undefined') {
-              reg.showNotification('Hello world!')
-            }
-          }, 3000)
-        });
-    }
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        navigator.serviceWorker.getRegistration()
+          .then(function(reg) {
+            setTimeout(() => {
+              if (typeof reg !== 'undefined') {
+                reg.showNotification('Hello world!')
+              }
+            }, 3000)
+          });
+      }
+    })
   }
 
   render() {
