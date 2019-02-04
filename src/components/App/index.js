@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
+import { interval } from 'rxjs'
+import { take } from 'rxjs/operators'
 
 import Setup from '../Setup/'
 import Navbar from '../Navbar/'
@@ -12,6 +14,7 @@ import withTiming from '../../lib/withTiming'
 import withPrayerTime from '../../lib/withPrayerTime'
 import withPrayerScreenAnimation from '../../lib/withPrayerScreenAnimation'
 
+import { showNotif, checkRequestPermission } from '../../utils/notification'
 import Timing from '../../contexts/Timing'
 
 import styles from './styles'
@@ -31,22 +34,15 @@ class App extends Component {
 
   componentDidMount() {
     // check DB is has configs
+    checkRequestPermission()
+
     const { finishInitializing } = this.context
     setTimeout(() => finishInitializing(), 1000)
 
     // Test notification SW
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        navigator.serviceWorker.getRegistration()
-          .then(function(reg) {
-            setTimeout(() => {
-              if (typeof reg !== 'undefined') {
-                reg.showNotification('Hello world!')
-              }
-            }, 3000)
-          });
-      }
-    })
+    interval(5000)
+      .pipe(take(2))
+      .subscribe(x => showNotif('Test Notification'))
   }
 
   render() {

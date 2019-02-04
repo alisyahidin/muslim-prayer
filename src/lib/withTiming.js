@@ -1,6 +1,6 @@
 import React from 'react'
 import moment, { duration } from 'moment'
-import { interval, of, empty, merge } from 'rxjs'
+import { timer, interval, of, empty, merge } from 'rxjs'
 import { filter, map } from 'rxjs/operators'
 import Moment from 'react-moment'
 
@@ -8,6 +8,7 @@ import PrayerTime from '../contexts/PrayerTime'
 import Timing from '../contexts/Timing'
 
 import { betweenHours } from '../utils/time'
+import { showNotif } from '../utils/notification'
 
 const ONE_HOURS = 1000*60*60
 const FIVE_MINUTES = 1000*60*5
@@ -55,7 +56,7 @@ const withTiming = Component => {
     prayerObserver = () => {
       const { current, next } = this.context
 
-      const nextObservable = next !== null
+      const next$ = next !== null
         ? of(moment(next.time, 'HH:mm').diff(moment()))
           .pipe(
             filter(milliseconds => {
@@ -66,7 +67,7 @@ const withTiming = Component => {
           )
         : empty()
 
-      const currentObservable = current !== null
+      const current$ = current !== null
         ? of(moment(current.time, 'HH:mm').diff(moment()))
           .pipe(
             filter(milliseconds => milliseconds < 0 && milliseconds > -ONE_HOURS),
@@ -79,15 +80,29 @@ const withTiming = Component => {
           )
         : empty()
 
-      const prayerObservable = merge(currentObservable, nextObservable)
+      const prayer$ = merge(current$, next$)
 
-      prayerObservable.subscribe(reminder => {
+      prayer$.subscribe(reminder => {
         this.setState({reminder})
       })
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-      return this.state.reminder !== nextState.reminder
+    prayerNotification = () => {
+      const { current } = this.context
+
+      const prayerNotification$ = current !== null
+        ? of(moment(current.time, 'HH:mm').diff(moment()))
+          .pipe(
+            filter(milliseconds => milliseconds < 0 && milliseconds > -2000)
+          )
+        : empty()
+
+      prayerNotification$
+        .subscribe(time => {
+          if (time < 0 && time > -1000) {
+            showNotif(current.name)
+          }
+        })
     }
 
     componentDidMount() {
@@ -95,6 +110,9 @@ const withTiming = Component => {
 
       interval(2000)
         .subscribe(() => this.prayerObserver())
+
+      timer(0, 1000)
+        .subscribe(() => this.prayerNotification())
     }
 
     render() {

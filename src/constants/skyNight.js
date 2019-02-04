@@ -1,5 +1,3 @@
-import { betweenHours } from '../utils/time'
-
 const night = () => {
   let objects = {
     bottom: '#12132E',

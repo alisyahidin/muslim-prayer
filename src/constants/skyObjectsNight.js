@@ -1,5 +1,3 @@
-import { betweenHours } from '../utils/time'
-
 import cloud1 from '../assets/clouds/1.svg'
 import cloud2 from '../assets/clouds/2.svg'
 import cloud3 from '../assets/clouds/3.svg'

@@ -18,7 +18,7 @@ const withPrayerTime = Component => {
         {
           'id': 'dzuhur',
           'name': 'Dzuhur',
-          'time': '12:03'
+          'time': '12:44'
         },
         {
           'id': 'ashar',
