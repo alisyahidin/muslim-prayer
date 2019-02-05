@@ -5,8 +5,8 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 
 import styles from './styles'
 
-const DateCard = ({children, classes, date}) => (
-  <ButtonBase className={classes.dateCard}>
+const DateCard = ({children, onClick, classes, date}) => (
+  <ButtonBase onClick={onClick} className={classes.dateCard}>
     <span className={classes.month}>feb</span>
     <span className={classes.date}>{date+1}</span>
   </ButtonBase>
@@ -14,6 +14,7 @@ const DateCard = ({children, classes, date}) => (
 
 DateCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(DateCard)
