@@ -23,10 +23,10 @@ const day = prayerSky => {
   if (betweenHours('14:30', '15:30')) {
     day = prayerSky.ashar
   }
-  if (betweenHours('17:30', '18:00')) {
+  if (betweenHours('17:30', '18:20')) {
     day = prayerSky.maghrib
   }
-  if (betweenHours('18:00', '18:30')) {
+  if (betweenHours('18:20', '18:30')) {
     day = {
       bottom: '#1e325b',
       middle: '#3b5a9b',

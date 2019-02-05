@@ -18,24 +18,32 @@ function Transition(props) {
 class DatePicker extends Component {
   state = {
     startDate: new Date(),
-    endDate: null,
-    key: 'selection',
+    endDate: new Date(),
   }
 
   handleChange = ranges => {
-    console.log(ranges)
-    this.setState({ ...ranges })
+    this.setState({
+      ...ranges.selection
+    })
+  }
+
+  closeAndReset = () => {
+    this.setState({
+      startDate: new Date(),
+      endDate: new Date(),
+    }, () => this.props.handleClose())
   }
 
   render() {
     const { classes, open, handleClose, type } = this.props
+    const ranges = [{...this.state, key: 'selection'}]
 
     return (
       <Dialog
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={handleClose}
+        onClose={this.closeAndReset}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
         classes={{
@@ -49,7 +57,7 @@ class DatePicker extends Component {
         >
           <DateRange
             className={classes.datePicker}
-            ranges={[this.state]}
+            ranges={ranges}
             onChange={this.handleChange}
           />
         </DialogContent>
