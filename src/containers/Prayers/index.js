@@ -90,7 +90,7 @@ class Prayers extends Component {
         <div className={classes.header}>
           <ListSubheader component="div">Prayer Time</ListSubheader>
           <IconButton
-            aria-owns={Boolean(anchorEl) ? 'simple-popper' : undefined}
+            aria-owns={Boolean(anchorEl) ? 'menu-update' : undefined}
             aria-haspopup="true"
             onClick={this.openMenu}
             className={classes.icon}
