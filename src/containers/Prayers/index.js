@@ -7,6 +7,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 
 import Card from '../../components/Card/'
 import DateCard from '../../components/DateCard/'
+import Menu from '../../components/Menu/'
 import PrayerInfo from '../../components/PrayerInfo/'
 
 import styles from './styles'
@@ -15,6 +16,7 @@ const dates = [...Array(31).keys()];
 
 class Prayers extends Component {
   state = {
+    anchorEl: null,
     open: false,
     date: '',
     prayers: []
@@ -67,24 +69,51 @@ class Prayers extends Component {
     })
   }
 
+  openMenu = event => {
+    this.setState({
+      anchorEl: event.currentTarget,
+    });
+  };
+
+  closeMenu = () => {
+    this.setState({
+      anchorEl: null,
+    });
+  };
+
   render() {
-    const { open, prayers, date } = this.state
+    const { anchorEl, open, prayers, date } = this.state
     const { classes } = this.props
 
     return (
       <div className={classes.prayers}>
         <div className={classes.header}>
           <ListSubheader component="div">Prayer Time</ListSubheader>
-          <IconButton className={classes.icon}>
+          <IconButton
+            aria-owns={Boolean(anchorEl) ? 'simple-popper' : undefined}
+            aria-haspopup="true"
+            onClick={this.openMenu}
+            className={classes.icon}
+          >
             <MoreHorizIcon />
           </IconButton>
         </div>
+        <Menu
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+          closeMenu={this.closeMenu}
+        />
         <Card className={classes.dates}>
           <div className={classes.innerDates}>
             {dates.map(date => <DateCard key={date} date={date} onClick={this.handleClick(date)} />)}
           </div>
         </Card>
-        <PrayerInfo date={date} open={open} prayers={prayers} handleClose={this.handleClose} />
+        <PrayerInfo
+          date={date}
+          open={open}
+          prayers={prayers}
+          handleClose={this.handleClose}
+        />
       </div>
     )
   }
