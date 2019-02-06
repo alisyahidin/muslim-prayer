@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { interval } from 'rxjs'
 import { take } from 'rxjs/operators'
 
-import Setup from '../Setup/'
+import LocationModal from '../LocationModal/'
 import Navbar from '../Navbar/'
 import Home from '../../containers/Home/'
 import Prayers from '../../containers/Prayers/'
@@ -15,39 +15,50 @@ import withPrayerTime from '../../lib/withPrayerTime'
 import withPrayerScreenAnimation from '../../lib/withPrayerScreenAnimation'
 
 import { showNotif, checkRequestPermission } from '../../utils/notification'
+import db from '../../utils/database'
 
 import styles from './styles'
 
 class App extends Component {
   state = {
-    installed: false
+    openSetup: false
   }
 
-  handleSetupSave = () => {
+  setupSaved = () => {
     this.setState({
-      installed: true
+      openSetup: false
     })
   }
 
   componentDidMount() {
-    // check DB is has configs
+    // check DB is has settings
+    db.open().then(async db => {
+      const count = await db.settings.count()
+      if (count === 0) {
+        this.setState({openSetup: true})
+      }
+    })
 
     // Test notification SW
     checkRequestPermission()
-    interval(5000)
-      .pipe(take(2))
-      .subscribe(x => showNotif('Test Notification'))
+    // interval(5000)
+    //   .pipe(take(2))
+    //   .subscribe(x => showNotif('Test Notification'))
   }
 
   render() {
     const { classes } = this.props
-    const { installed } = this.state
+    const { openSetup } = this.state
 
     return (
       <Router>
         <div className={classes.container}>
           <div className={classes.body}>
-            <Setup installed={installed} handleSetupSave={this.handleSetupSave} />
+            <LocationModal
+              open={openSetup}
+              handleClose={this.setupSaved}
+              disableOnClose
+            />
 
             <Route path="/" exact component={Home} />
             <Route path="/prayers" exact component={Prayers} />

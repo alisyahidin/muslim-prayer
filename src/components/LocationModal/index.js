@@ -12,6 +12,8 @@ import Card from './Card'
 import Wrapper from './Wrapper'
 import Loader from './Loader'
 
+import db from '../../utils/database'
+
 import styles from './styles'
 
 const countries = [
@@ -31,7 +33,7 @@ const cities = [
   label: suggestion.label,
 }))
 
-class SetupModal extends React.Component {
+class LocationModal extends React.Component {
   state = {
     prepare: true,
     country: null,
@@ -46,19 +48,65 @@ class SetupModal extends React.Component {
   }
 
   handleSave = () => {
-    const { handleSetupSave } = this.props
+    const { handleClose } = this.props
+    const { country, city } = this.state
 
     this.setState({
       saving: true
-    }, () => {
-      this.timer = setTimeout(() => handleSetupSave(), 2000)
+    })
+
+    db.open().then(async db => {
+      const count = await db.settings.count()
+
+      if (count === 0) {
+        this.dbAdd()
+      } else {
+        this.dbUpdate()
+      }
+    })
+
+  }
+
+  dbUpdate = () => {
+    const { handleClose } = this.props
+    const { country, city } = this.state
+
+    db.open().then(async db => {
+      db.settings.update('location', {
+        country: country,
+        city: city
+      }).then(result => {
+        handleClose()
+      })
+    })
+  }
+
+  dbAdd = () => {
+    const { handleClose } = this.props
+    const { country, city } = this.state
+
+    db.open().then(async db => {
+      db.settings.add({
+        name: 'location',
+        country: country,
+        city: city
+      }).then(result => {
+        handleClose()
+      })
     })
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({
-      prepare: false,
-    }), 2000)
+    db.open().then(async db => {
+      const location = await db.settings.get('location')
+      this.timer = setTimeout(() => {
+        this.setState({
+          country: typeof location !== 'undefined' ? location.country : null,
+          city: typeof location !== 'undefined' ? location.city : null,
+          prepare: false
+        })
+      }, 2000)
+    })
   }
 
   componentWillUnmount() {
@@ -66,7 +114,7 @@ class SetupModal extends React.Component {
   }
 
   render() {
-    const { classes, installed } = this.props
+    const { classes, open, handleClose, disableOnClose } = this.props
     const { prepare, country, city, saving } = this.state
 
     const disabled = country !== null && city !== null? false : true
@@ -75,7 +123,8 @@ class SetupModal extends React.Component {
       <Modal
         aria-labelledby="setup-dialog"
         aria-describedby="setup-dialog-description"
-        open={!installed}
+        onClose={disableOnClose ? () => {} : handleClose}
+        open={open}
       >
         <Card pose={prepare ? 'small' : 'grow'} className={classes.paper}>
           <Loader className={classes.loader}><CircularProgress /></Loader>
@@ -113,8 +162,15 @@ class SetupModal extends React.Component {
   }
 }
 
-SetupModal.propTypes = {
-  classes: PropTypes.object.isRequired,
+LocationModal.defaultProps = {
+  disableOnClose: false
 }
 
-export default withStyles(styles, { withTheme: true })(SetupModal)
+LocationModal.propTypes = {
+  classes: PropTypes.object.isRequired,
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  disableOnClose: PropTypes.bool
+}
+
+export default withStyles(styles, { withTheme: true })(LocationModal)

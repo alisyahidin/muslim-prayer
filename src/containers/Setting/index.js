@@ -8,12 +8,28 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
 import Card from '../../components/Card/'
+import LocationModal from '../../components/LocationModal/'
 import menu from './menu'
 import styles from './styles'
 
 class Setting extends Component {
+  state = {
+    location: false
+  }
+
+  handleClick = setting => () => {
+    this.setState({
+      [setting.toLowerCase()]: true
+    })
+  }
+
+  closeLocation = () => {
+    this.setState({location: false})
+  }
+
   render() {
     const { classes } = this.props
+    const { location } = this.state
 
     return (
       <div className={classes.setting}>
@@ -24,7 +40,12 @@ class Setting extends Component {
             subheader={<ListSubheader className={classes.header} component="div">Settings</ListSubheader>}
           >
             {menu.map((menu, i) => (
-              <ListItem key={i} className={classes.list} button>
+              <ListItem
+                key={i}
+                className={classes.list}
+                onClick={this.handleClick(menu.name)}
+                button
+              >
                 <ListItemIcon>
                   {menu.icon(classes.icon)}
                 </ListItemIcon>
@@ -39,6 +60,10 @@ class Setting extends Component {
             ))}
           </List>
         </Card>
+        <LocationModal
+          open={location}
+          handleClose={this.closeLocation}
+        />
       </div>
     )
   }
