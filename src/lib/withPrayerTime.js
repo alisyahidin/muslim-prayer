@@ -1,5 +1,4 @@
 import React from 'react'
-import { interval } from 'rxjs'
 import moment from 'moment'
 
 import PrayerTime from '../contexts/PrayerTime'
@@ -56,13 +55,6 @@ const withPrayerTime = Component => {
       })
     }
 
-    componentDidMount() {
-      interval(1000)
-        .subscribe(() => {
-          this.getNearestPrayer()
-        })
-    }
-
     render() {
       const { prayers, current, next } = this.state
 
@@ -72,6 +64,7 @@ const withPrayerTime = Component => {
             prayers,
             current,
             next,
+            getNearestPrayer: this.getNearestPrayer,
             getPrayerData: this.getPrayerData,
           }}
         >

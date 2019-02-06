@@ -20,7 +20,7 @@ import styles from './styles'
 
 class App extends Component {
   state = {
-    installed: true
+    installed: false
   }
 
   handleSetupSave = () => {
@@ -34,9 +34,9 @@ class App extends Component {
 
     // Test notification SW
     checkRequestPermission()
-    // interval(5000)
-    //   .pipe(take(2))
-    //   .subscribe(x => showNotif('Test Notification'))
+    interval(5000)
+      .pipe(take(2))
+      .subscribe(x => showNotif('Test Notification'))
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import moment, { duration } from 'moment'
-import { timer, interval, of, empty, merge } from 'rxjs'
+import { of, empty, merge } from 'rxjs'
 import { filter, map } from 'rxjs/operators'
 import Moment from 'react-moment'
 
@@ -80,7 +80,7 @@ const withTiming = Component => {
       })
     }
 
-    prayerNotification = () => {
+    notificationObserver = () => {
       const { current } = this.context
 
       const prayerNotification$ = current !== null
@@ -98,16 +98,6 @@ const withTiming = Component => {
         })
     }
 
-    componentDidMount() {
-      this.updateTiming()
-
-      interval(2000)
-        .subscribe(() => this.prayerObserver())
-
-      timer(0, 1000)
-        .subscribe(() => this.prayerNotification())
-    }
-
     render() {
       const { timing, reminder } = this.state
 
@@ -116,6 +106,8 @@ const withTiming = Component => {
           value={{
             timing,
             reminder,
+            prayerObserver: this.prayerObserver,
+            notificationObserver: this.notificationObserver,
             updateTiming: this.updateTiming,
             getPrayer: this.getPrayer,
           }}
