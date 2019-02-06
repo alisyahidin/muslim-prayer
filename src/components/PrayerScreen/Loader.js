@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { timer } from 'rxjs'
 
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import Screen from './Screen'
