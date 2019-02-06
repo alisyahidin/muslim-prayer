@@ -9,12 +9,14 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 
 import Card from '../../components/Card/'
 import LocationModal from '../../components/LocationModal/'
+import Info from '../../components/Info/'
 import menu from './menu'
 import styles from './styles'
 
 class Setting extends Component {
   state = {
-    location: false
+    location: false,
+    info: false
   }
 
   handleClick = setting => () => {
@@ -23,13 +25,15 @@ class Setting extends Component {
     })
   }
 
-  closeLocation = () => {
-    this.setState({location: false})
+  handleClose = setting => () => {
+    this.setState({
+      [setting]: false
+    })
   }
 
   render() {
     const { classes } = this.props
-    const { location } = this.state
+    const { location, info } = this.state
 
     return (
       <div className={classes.setting}>
@@ -62,7 +66,11 @@ class Setting extends Component {
         </Card>
         <LocationModal
           open={location}
-          handleClose={this.closeLocation}
+          handleClose={this.handleClose('location')}
+        />
+        <Info
+          open={info}
+          handleClose={this.handleClose('info')}
         />
       </div>
     )
