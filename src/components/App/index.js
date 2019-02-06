@@ -41,9 +41,9 @@ class App extends Component {
 
     // Test notification SW
     checkRequestPermission()
-    // interval(5000)
-    //   .pipe(take(2))
-    //   .subscribe(x => showNotif('Test Notification'))
+    interval(5000)
+      .pipe(take(2))
+      .subscribe(x => showNotif('Test Notification'))
   }
 
   render() {
