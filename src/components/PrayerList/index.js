@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loadable from 'react-loadable'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -9,11 +10,15 @@ import IconButton from '@material-ui/core/IconButton'
 import AlarmIcon from '@material-ui/icons/Alarm'
 
 import Card from '../Card/'
-import DatePicker from '../DatePicker/'
 import PrayerTimeContext from '../../contexts/PrayerTime'
 import Timing from '../../contexts/Timing'
 
 import styles from './styles'
+
+const DatePicker = Loadable({
+  loader: () => import('../DatePicker/'),
+  loading: () => () => <></>
+})
 
 class PrayerList extends Component {
   static contextType = Timing

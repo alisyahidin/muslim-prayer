@@ -8,10 +8,10 @@ const Card = posed.div({
     transition: {
       opacity: {
         delay: 800,
-        duration: 600,
+        duration: 500,
         ease: easing.circOut
       },
-      duration: 300,
+      duration: 50,
       ease: easing.circOut
     }
   },
@@ -21,10 +21,10 @@ const Card = posed.div({
     transition: {
       opacity: {
         delay: 800,
-        duration: 600,
+        duration: 500,
         ease: easing.circOut
       },
-      duration: 300,
+      duration: 50,
       ease: easing.circOut
     }
   },

@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
+import Loadable from 'react-loadable'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { interval } from 'rxjs'
 
-import PrayerScreen from '../../components/PrayerScreen/'
+import PrayerScreenLoader from '../../components/PrayerScreen/Loader'
 import PrayerList from '../../components/PrayerList/'
 import PrayerScreenAnimation from '../../contexts/PrayerScreenAnimation'
 import PrayerTime from '../../contexts/PrayerTime'
 
 import styles from './styles'
+
+const PrayerScreen = Loadable({
+  loader: () => import('../../components/PrayerScreen/'),
+  loading: () => <PrayerScreenLoader />
+})
 
 class Home extends Component {
   static contextType = PrayerTime

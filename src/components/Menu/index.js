@@ -1,4 +1,5 @@
 import React from 'react'
+import Loadable from 'react-loadable'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Popover from '@material-ui/core/Popover'
@@ -6,9 +7,12 @@ import MenuItem from '@material-ui/core/MenuItem'
 import UpdateIcon from '@material-ui/icons/Update'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 
-import DatePicker from '../DatePicker/'
-
 import styles from './styles'
+
+const DatePicker = Loadable({
+  loader: () => import('../DatePicker/'),
+  loading: () => () => <></>
+})
 
 class Menu extends React.Component {
   state = {
