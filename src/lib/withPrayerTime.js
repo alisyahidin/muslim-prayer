@@ -3,37 +3,40 @@ import moment from 'moment'
 
 import PrayerTime from '../contexts/PrayerTime'
 
+const prayersTime = [
+  {
+    'id': 'shubuh',
+    'name': 'Shubuh',
+    'time': '04:13'
+  },
+  {
+    'id': 'dzuhur',
+    'name': 'Dzuhur',
+    'time': '12:44'
+  },
+  {
+    'id': 'ashar',
+    'name': 'Ashar',
+    'time': '15:00'
+  },
+  {
+    'id': 'maghrib',
+    'name': 'Maghrib',
+    'time': '18:05'
+  },
+  {
+    'id': 'isya',
+    'name': 'Isya',
+    'time': '19:07'
+  }
+]
+
 const withPrayerTime = Component => {
   return class extends React.Component {
     state = {
       current: null,
       next: null,
       prayers: [
-        {
-          'id': 'shubuh',
-          'name': 'Shubuh',
-          'time': '04:13'
-        },
-        {
-          'id': 'dzuhur',
-          'name': 'Dzuhur',
-          'time': '12:44'
-        },
-        {
-          'id': 'ashar',
-          'name': 'Ashar',
-          'time': '15:00'
-        },
-        {
-          'id': 'maghrib',
-          'name': 'Maghrib',
-          'time': '18:05'
-        },
-        {
-          'id': 'isya',
-          'name': 'Isya',
-          'time': '19:07'
-        },
       ]
     }
 
@@ -55,6 +58,17 @@ const withPrayerTime = Component => {
       })
     }
 
+    setPrayerTime = () => {
+      // get prayers data depends date range
+
+      // set state for today
+      if (this.state.prayers.length === 0) {
+        this.setState({
+          prayers: prayersTime
+        })
+      }
+    }
+
     render() {
       const { prayers, current, next } = this.state
 
@@ -64,6 +78,7 @@ const withPrayerTime = Component => {
             prayers,
             current,
             next,
+            setPrayerTime: this.setPrayerTime,
             getNearestPrayer: this.getNearestPrayer,
             getPrayerData: this.getPrayerData,
           }}

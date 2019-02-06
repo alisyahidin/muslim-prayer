@@ -48,9 +48,6 @@ class LocationModal extends React.Component {
   }
 
   handleSave = () => {
-    const { handleClose } = this.props
-    const { country, city } = this.state
-
     this.setState({
       saving: true
     })
@@ -76,7 +73,9 @@ class LocationModal extends React.Component {
         country: country,
         city: city
       }).then(result => {
-        handleClose()
+        this.setState({
+          saving: false
+        }, () => handleClose())
       })
     })
   }
@@ -91,7 +90,9 @@ class LocationModal extends React.Component {
         country: country,
         city: city
       }).then(result => {
-        handleClose()
+        this.setState({
+          saving: false
+        }, () => handleClose())
       })
     })
   }

@@ -7,8 +7,9 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import Grow from '@material-ui/core/Grow';
-
 import { DateRange } from 'react-date-range'
+
+import PrayerTime from '../../contexts/PrayerTime'
 
 import styles from './styles'
 
@@ -17,6 +18,8 @@ function Transition(props) {
 }
 
 class DatePicker extends Component {
+  static contextType = PrayerTime
+
   state = {
     startDate: new Date(),
     endDate: new Date(),
@@ -48,8 +51,11 @@ class DatePicker extends Component {
   }
 
   handleClick = () => {
+    const { setPrayerTime } = this.context
+
     if (this.props.type === 'update') {
       console.log('updating')
+      setPrayerTime()
     }
     if (this.props.type === 'delete') {
       console.log('deleting')

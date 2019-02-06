@@ -130,7 +130,6 @@ class MySelect extends Component {
             classes={classes}
             styles={selectStyles}
             components={components}
-            isClearable
           />
         </NoSsr>
       </div>

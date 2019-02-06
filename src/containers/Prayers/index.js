@@ -12,7 +12,7 @@ import PrayerInfo from '../../components/PrayerInfo/'
 
 import styles from './styles'
 
-const dates = [...Array(31).keys()];
+const dates = [...Array(28).keys()];
 
 class Prayers extends Component {
   state = {
@@ -109,7 +109,7 @@ class Prayers extends Component {
           </div>
         </Card>
         <PrayerInfo
-          date={date}
+          date={`${date+1} February 2019`}
           open={open}
           prayers={prayers}
           handleClose={this.handleClose}

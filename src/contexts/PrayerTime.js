@@ -4,6 +4,9 @@ const defaultContext = {
   prayers: [],
   current: undefined,
   next: undefined,
+  setPrayerTime: () => {
+    console.log('from default setPrayerTime PrayerTime.js')
+  },
   getNearestPrayer: () => {
     console.log('from default getNearestPrayer PrayerTime.js')
   },

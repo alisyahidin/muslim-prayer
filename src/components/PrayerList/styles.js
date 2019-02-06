@@ -1,6 +1,18 @@
 import { navbarHeight, smallScreen } from '../../constants/'
 
 export default theme => ({
+  card: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyState: {
+    fontSize: '1.1rem',
+    color: '#979BB1',
+    '&:hover': {
+      cursor: 'pointer'
+    }
+  },
   prayerList: {
     boxSizing: 'border-box',
     height: '60%',
@@ -8,6 +20,7 @@ export default theme => ({
     paddingBottom: (smallScreen ? 15 : 25) + navbarHeight,
   },
   lists: {
+    width: '100%',
     height: '100%',
     padding: 0,
     display: 'flex',
