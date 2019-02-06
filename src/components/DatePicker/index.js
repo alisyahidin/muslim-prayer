@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import Slide from '@material-ui/core/Slide'
+import Grow from '@material-ui/core/Grow';
 
 import { DateRange } from 'react-date-range'
 
 import styles from './styles'
 
 function Transition(props) {
-  return <Slide direction="up" {...props} />
+  return <Grow {...props} />
 }
 
 class DatePicker extends Component {
@@ -34,8 +35,31 @@ class DatePicker extends Component {
     }, () => this.props.handleClose())
   }
 
+  getMinDate = () => {
+    return this.props.type === 'delete'
+      ? moment('01 02 2019', 'DD MM YYYY')
+      : moment('01 01 2019', 'DD MM YYYY')
+  }
+
+  getMaxDate = () => {
+    return this.props.type === 'delete'
+      ? moment('27 02 2019', 'DD MM YYYY')
+      : moment().add(5, 'y')
+  }
+
+  handleClick = () => {
+    if (this.props.type === 'update') {
+      console.log('updating')
+    }
+    if (this.props.type === 'delete') {
+      console.log('deleting')
+    }
+
+    this.props.handleClose()
+  }
+
   render() {
-    const { classes, open, handleClose, type } = this.props
+    const { classes, open, type } = this.props
     const ranges = [{...this.state, key: 'selection'}]
 
     return (
@@ -58,6 +82,8 @@ class DatePicker extends Component {
           <DateRange
             className={classes.datePicker}
             ranges={ranges}
+            minDate={new Date(this.getMinDate())}
+            maxDate={new Date(this.getMaxDate())}
             onChange={this.handleChange}
           />
         </DialogContent>
@@ -66,8 +92,8 @@ class DatePicker extends Component {
             root: classes.action
           }}
         >
-          <Button onClick={handleClose} color="primary">
-            {type.toUpperCase()}
+          <Button onClick={this.handleClick} color="primary">
+            {type !== null && type.toUpperCase()}
           </Button>
         </DialogActions>
       </Dialog>

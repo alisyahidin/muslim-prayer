@@ -12,8 +12,12 @@ import styles from './styles'
 
 class Menu extends React.Component {
   state = {
-    openDatePicker: true,
-    type: 'update'
+    openDatePicker: false,
+    type: null
+  }
+
+  closeMenu = () => {
+    this.setState({type: null}, () => this.props.closeMenu())
   }
 
   handleMenuItemClick = type => () => {
@@ -27,13 +31,14 @@ class Menu extends React.Component {
 
   closeDatePicker = () => {
     this.setState({
-      openDatePicker: false
+      openDatePicker: false,
+      type: null
     })
   }
 
   render() {
     const { openDatePicker, type } = this.state
-    const { classes, anchorEl, closeMenu } = this.props
+    const { classes, anchorEl } = this.props
     const open = Boolean(anchorEl)
 
     return (
@@ -42,7 +47,7 @@ class Menu extends React.Component {
           id="menu-update"
           open={open}
           anchorEl={anchorEl}
-          onClose={closeMenu}
+          onClose={this.closeMenu}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'right',
