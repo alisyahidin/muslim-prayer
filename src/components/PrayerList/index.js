@@ -17,7 +17,7 @@ import styles from './styles'
 
 const DatePicker = Loadable({
   loader: () => import('../DatePicker/'),
-  loading: () => () => <></>
+  loading: () => <input type="hidden" />
 })
 
 class PrayerList extends Component {

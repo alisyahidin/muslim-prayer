@@ -4,6 +4,7 @@ export default theme => ({
     margin: 'unset'
   },
   content: {
+    color: '#555555',
     textAlign: 'center',
     fontSize: '1rem',
     padding: theme.spacing.unit*2,
