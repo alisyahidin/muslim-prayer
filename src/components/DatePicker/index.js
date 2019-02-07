@@ -51,14 +51,19 @@ class DatePicker extends Component {
   }
 
   handleClick = () => {
-    const { setPrayerTime } = this.context
+    const { updatePrayerTimes, deletePrayerTimes } = this.context
+    const { startDate, endDate } = this.state
+
+    const start = moment(startDate).format('D')
+    const end = moment(endDate).format('D')
 
     if (this.props.type === 'update') {
       console.log('updating')
-      setPrayerTime()
+      updatePrayerTimes(start, end)
     }
     if (this.props.type === 'delete') {
       console.log('deleting')
+      deletePrayerTimes(start, end)
     }
 
     this.props.handleClose()

@@ -44,6 +44,28 @@ const withPrayerTime = Component => {
       }
     }
 
+    updatePrayerTimes = (start, end) => {
+      const fakeDate = [...Array(Math.abs(end-start+1)).keys()]
+      // save date to prayers state
+      this.setState({
+        prayers: fakeDate.map(num => parseInt(start) + parseInt(num))
+      })
+    }
+
+    deletePrayerTimes = (start, end) => {
+      const fakeDate = [...Array(Math.abs(end-start+1)).keys()]
+      const range = fakeDate.map(num => parseInt(start) + parseInt(num))
+
+      // delete date and save to prayers state
+      this.setState(prevState => ({
+        prayers: prevState.prayers.length > 0
+          ? prevState.prayers.filter(prayer => {
+            return range.indexOf(prayer) === -1;
+          })
+          : []
+      }))
+    }
+
     render() {
       const { prayers, prayer, current, next } = this.state
 
@@ -56,6 +78,7 @@ const withPrayerTime = Component => {
             next,
             setPrayerTime: this.setPrayerTime,
             updatePrayerTimes: this.updatePrayerTimes,
+            deletePrayerTimes: this.deletePrayerTimes,
             getNearestPrayer: this.getNearestPrayer,
             getPrayerData: this.getPrayerData,
           }}

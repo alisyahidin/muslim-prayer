@@ -10,10 +10,10 @@ import DateCard from '../../components/DateCard/'
 import Menu from '../../components/Menu/'
 import PrayerInfo from '../../components/PrayerInfo/'
 import PrayerTime from '../../contexts/PrayerTime'
+import EmptyState from '../../components/EmptyState/'
 
+import empty from '../../assets/empty-state/prayer.png'
 import styles from './styles'
-
-const dates = [...Array(28).keys()];
 
 class Prayers extends Component {
   static contextType = PrayerTime
@@ -86,6 +86,7 @@ class Prayers extends Component {
   render() {
     const { anchorEl, open, date } = this.state
     const { classes } = this.props
+    const { prayers } = this.context
 
     return (
       <div className={classes.prayers}>
@@ -107,11 +108,19 @@ class Prayers extends Component {
         />
         <Card className={classes.dates}>
           <div className={classes.innerDates}>
-            {dates.map(date => <DateCard key={date} date={date} onClick={this.handleClick(date)} />)}
+            {prayers.length === 0 && (
+              <EmptyState
+                img={empty}
+                message="There is no prayer time"
+              />
+            )}
+            {prayers.length > 0 && prayers.map(date => (
+              <DateCard key={date} date={date} onClick={this.handleClick(date)} />
+            ))}
           </div>
         </Card>
         <PrayerInfo
-          date={`${date+1} February 2019`}
+          date={`${date} February 2019`}
           open={open}
           prayer={date ? this.getPrayerByDate(date) : []}
           handleClose={this.handleClose}

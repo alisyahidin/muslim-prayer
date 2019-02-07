@@ -8,7 +8,7 @@ import styles from './styles'
 const DateCard = ({children, onClick, classes, date}) => (
   <ButtonBase onClick={onClick} className={classes.dateCard}>
     <span className={classes.month}>feb</span>
-    <span className={classes.date}>{date+1}</span>
+    <span className={classes.date}>{date}</span>
   </ButtonBase>
 )
 
