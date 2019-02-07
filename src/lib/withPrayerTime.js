@@ -1,35 +1,8 @@
 import React from 'react'
 import moment from 'moment'
 
-import PrayerTime from '../contexts/PrayerTime'
-
-const prayersTime = [
-  {
-    'id': 'shubuh',
-    'name': 'Shubuh',
-    'time': '04:13'
-  },
-  {
-    'id': 'dzuhur',
-    'name': 'Dzuhur',
-    'time': '12:44'
-  },
-  {
-    'id': 'ashar',
-    'name': 'Ashar',
-    'time': '15:00'
-  },
-  {
-    'id': 'maghrib',
-    'name': 'Maghrib',
-    'time': '18:05'
-  },
-  {
-    'id': 'isya',
-    'name': 'Isya',
-    'time': '19:07'
-  }
-]
+import PrayerTimeContext from '../contexts/PrayerTime'
+import { prayerTime } from '../constants/'
 
 const withPrayerTime = Component => {
   return class extends React.Component {
@@ -64,7 +37,7 @@ const withPrayerTime = Component => {
       // set state for today
       if (this.state.prayers.length === 0) {
         this.setState({
-          prayers: prayersTime
+          prayers: prayerTime
         })
       }
     }
@@ -73,7 +46,7 @@ const withPrayerTime = Component => {
       const { prayers, current, next } = this.state
 
       return (
-        <PrayerTime.Provider
+        <PrayerTimeContext.Provider
           value={{
             prayers,
             current,
@@ -84,7 +57,7 @@ const withPrayerTime = Component => {
           }}
         >
           <Component />
-        </PrayerTime.Provider>
+        </PrayerTimeContext.Provider>
       )
     }
   }

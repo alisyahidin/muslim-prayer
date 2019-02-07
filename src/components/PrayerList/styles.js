@@ -6,13 +6,6 @@ export default theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  emptyState: {
-    fontSize: '1.1rem',
-    color: '#979BB1',
-    '&:hover': {
-      cursor: 'pointer'
-    }
-  },
   prayerList: {
     boxSizing: 'border-box',
     height: '60%',
@@ -40,5 +33,12 @@ export default theme => ({
   icon: {
     padding: 6,
     color: '#979BB1',
+  },
+  loader: {
+    color: '#FFF',
+    marginTop: 3,
+    marginBottom: 3,
+    width: `${theme.spacing.unit*2}px !important`,
+    height: `${theme.spacing.unit*2}px !important`,
   }
 })
