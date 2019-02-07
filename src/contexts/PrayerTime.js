@@ -2,10 +2,14 @@ import { createContext } from 'react'
 
 const defaultContext = {
   prayers: [],
+  prayer: [],
   current: undefined,
   next: undefined,
   setPrayerTime: () => {
     console.log('from default setPrayerTime PrayerTime.js')
+  },
+  updatePrayerTimes: () => {
+    console.log('from default updatePrayerTimes PrayerTime.js')
   },
   getNearestPrayer: () => {
     console.log('from default getNearestPrayer PrayerTime.js')

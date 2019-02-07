@@ -9,21 +9,25 @@ import Card from '../../components/Card/'
 import DateCard from '../../components/DateCard/'
 import Menu from '../../components/Menu/'
 import PrayerInfo from '../../components/PrayerInfo/'
+import PrayerTime from '../../contexts/PrayerTime'
 
 import styles from './styles'
 
 const dates = [...Array(28).keys()];
 
 class Prayers extends Component {
+  static contextType = PrayerTime
+
   state = {
     anchorEl: null,
     open: false,
     date: '',
-    prayers: []
   }
 
   getPrayerByDate = date => {
-    // fetch to storage and save to state
+    // const { prayers } = this.context
+    // prayers.filter(prayer.date === date)
+
     return [
       {
         'id': 'shubuh',
@@ -56,7 +60,6 @@ class Prayers extends Component {
   handleClick = date => () => {
     this.setState({
       date,
-      prayers: this.getPrayerByDate(date),
       open: true
     })
   }
@@ -64,7 +67,6 @@ class Prayers extends Component {
   handleClose = () => {
     this.setState({
       date: '',
-      prayers: [],
       open: false,
     })
   }
@@ -82,7 +84,7 @@ class Prayers extends Component {
   };
 
   render() {
-    const { anchorEl, open, prayers, date } = this.state
+    const { anchorEl, open, date } = this.state
     const { classes } = this.props
 
     return (
@@ -111,7 +113,7 @@ class Prayers extends Component {
         <PrayerInfo
           date={`${date+1} February 2019`}
           open={open}
-          prayers={prayers}
+          prayer={date ? this.getPrayerByDate(date) : []}
           handleClose={this.handleClose}
         />
       </div>

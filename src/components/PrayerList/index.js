@@ -42,7 +42,7 @@ class PrayerList extends Component {
 
   render() {
     const { classes } = this.props
-    const { prayers } = this.context
+    const { prayer } = this.context
     const { loading } = this.state
 
     return (
@@ -50,7 +50,7 @@ class PrayerList extends Component {
         {({timing, updateTiming}) => (
           <div className={classes.prayerList}>
             <Card className={classes.card}>
-              {prayers.length === 0 && (
+              {prayer.length === 0 && (
                 <EmptyState
                   img={empty}
                   message="There is no prayer time"
@@ -58,9 +58,9 @@ class PrayerList extends Component {
                   action={loading ? <CircularProgress className={classes.loader} /> : 'Update'}
                 />
               )}
-              {prayers.length > 0 && (
+              {prayer.length > 0 && (
                 <List className={classes.lists} component="ul">
-                  {prayers.map((prayer, i) => (
+                  {prayer.map((prayer, i) => (
                     <ListItem
                       selected={timing === prayer.id}
                       key={i}

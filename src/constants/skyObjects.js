@@ -18,7 +18,7 @@ const sun = {
   src: sunResource
 }
 
-const prayers = {
+const prayer = {
   shubuh: [
     {
       ...sun,
@@ -365,4 +365,4 @@ const prayers = {
   ],
 }
 
-export default Object.assign(prayers, { day: day(prayers), night })
+export default Object.assign(prayer, { day: day(prayer), night })

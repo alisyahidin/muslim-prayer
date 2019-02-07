@@ -21,7 +21,7 @@ function Transition(props) {
 
 class PrayerInfo extends Component {
   render() {
-    const { classes, open, prayers, handleClose, date } = this.props
+    const { classes, open, prayer, handleClose, date } = this.props
 
     return (
       <Dialog
@@ -51,7 +51,7 @@ class PrayerInfo extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {prayers.map(prayer => (
+              {prayer.map(prayer => (
                 <TableRow key={prayer.id}>
                   <TableCell align="left" component="th">
                     {prayer.name}
@@ -81,7 +81,7 @@ class PrayerInfo extends Component {
 PrayerInfo.propTypes = {
   classes: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
-  prayers: PropTypes.array.isRequired,
+  prayer: PropTypes.array.isRequired,
   handleClose: PropTypes.func.isRequired,
   date: PropTypes.string.isRequired,
 }

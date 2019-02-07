@@ -92,7 +92,7 @@ const objectsInDay = (bottom = 0, sunResource = sun) => (
   ]
 )
 
-const day = prayers => {
+const day = prayer => {
   let day = objectsInDay(-20)
 
   if (betweenHours('05:00', '06:00')) {
@@ -114,16 +114,16 @@ const day = prayers => {
     day = objectsInDay(40)
   }
   if (betweenHours('11:00', '13:00')) {
-    day = prayers.dzuhur
+    day = prayer.dzuhur
   }
   if (betweenHours('14:30', '15:30')) {
-    day = prayers.ashar
+    day = prayer.ashar
   }
   if (betweenHours('16:30', '17:30')) {
     day = objectsInDay(5)
   }
   if (betweenHours('17:30', '18:00')) {
-    day = prayers.maghrib
+    day = prayer.maghrib
   }
 
   return day
