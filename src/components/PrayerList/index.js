@@ -53,7 +53,7 @@ class PrayerList extends Component {
               {prayer.length === 0 && (
                 <EmptyState
                   img={empty}
-                  message="There is no prayer time"
+                  message="Empty time for today"
                   handleClick={this.getPrayerTime}
                   action={loading ? <CircularProgress className={classes.loader} /> : 'Update'}
                 />

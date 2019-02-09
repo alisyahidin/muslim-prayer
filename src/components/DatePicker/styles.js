@@ -20,4 +20,10 @@ export default theme => ({
     justifyContent: 'center',
     marginBottom: theme.spacing.unit*2
   },
+  button: {
+    backgroundColor: '#3eafff !important',
+  },
+  buttonLabel: {
+    textTransform: 'capitalize !important'
+  }
 })

@@ -7,6 +7,9 @@ export default theme => ({
     padding: '0px 20px',
     paddingBottom: 20 + 48 + navbarHeight
   },
+  menuIcon: {
+    color: 'rgba(0, 0, 0, 0.54)'
+  },
   dates: {
     padding: '15px 10px',
     margin: 'unset',

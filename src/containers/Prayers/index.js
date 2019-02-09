@@ -12,7 +12,7 @@ import PrayerInfo from '../../components/PrayerInfo/'
 import PrayerTime from '../../contexts/PrayerTime'
 import EmptyState from '../../components/EmptyState/'
 
-import empty from '../../assets/empty-state/prayer.png'
+import empty from '../../assets/empty-state/calendar.png'
 import styles from './styles'
 
 class Prayers extends Component {
@@ -98,7 +98,12 @@ class Prayers extends Component {
             onClick={this.openMenu}
             className={classes.icon}
           >
-            <MoreHorizIcon />
+            <MoreHorizIcon
+              color="primary"
+              classes={{
+                colorPrimary: classes.menuIcon
+              }}
+            />
           </IconButton>
         </div>
         <Menu

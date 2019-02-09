@@ -96,6 +96,7 @@ class DatePicker extends Component {
             minDate={new Date(this.getMinDate())}
             maxDate={new Date(this.getMaxDate())}
             onChange={this.handleChange}
+            rangeColors={['#3eafff', '#3eafff']}
           />
         </DialogContent>
         <DialogActions
@@ -103,8 +104,17 @@ class DatePicker extends Component {
             root: classes.action
           }}
         >
-          <Button onClick={this.handleClick} color="primary">
-            {type !== null && type.toUpperCase()}
+          <Button
+            onClick={this.handleClick}
+            size="small"
+            color="primary"
+            variant="contained"
+            classes={{
+              root: classes.button,
+              label: classes.buttonLabel
+            }}
+          >
+            {type !== null && type}
           </Button>
         </DialogActions>
       </Dialog>
