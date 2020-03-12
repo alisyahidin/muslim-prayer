@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.muslim-prayer.com",
+               "sha256_cert_fingerprints": ["95:A7:FB:CF:5E:16:07:9B:6D:C9:0C:D3:6B:8C:2A:E8:42:43:71:AE:4A:5B:AC:EE:F8:10:86:3D:14:51:05:C4"] }
+}]
